@@ -11,6 +11,7 @@ module.exports = class extends Event {
   }
 
   run(reaction, user) {
+    if (reaction.message.channel.parent.id !== '589243529075752970') return;
     if (reaction.emoji.name === '❌') {
       for (const users of reaction.users) {
         // if (users.roles.position >= 23) return;

@@ -12,8 +12,10 @@ module.exports = class extends Event {
 
   run(reaction, user) {
     if (reaction.emoji.name === '❌') {
-      if (user.roles.position >= 23) return;
-      for (const users of reaction.users) reaction.users.remove(user.id);
+      for (const users of reaction.users) {
+        if (users.roles.position >= 23) return;
+        reaction.users.remove(user.id);
+      }
     }
   }
 };

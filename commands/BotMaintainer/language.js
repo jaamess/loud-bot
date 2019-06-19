@@ -27,18 +27,18 @@ module.exports = class extends Command {
     message.send(embed);
   }
 
-  parseLanguage(language) {
-    switch (language) {
+  parseLanguage(rawLanguage) {
+    switch (rawLanguage) {
       case 'portugues':
       case 'português':
       case 'portuguese':
-        return (lang = 'pt-BR');
+        return 'pt-BR';
       case 'inglês':
       case 'ingles':
       case 'english':
-        return (lang = 'en-US');
+        return 'en-US';
       default:
-        return (lang = 'en-US');
+        return 'en-US';
     }
   }
 };

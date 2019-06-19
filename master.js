@@ -1,7 +1,7 @@
 const { Client } = require('klasa');
 const { prefix, token } = require('./ecosystem.config.json');
 
-Client.defaultPermissionLevels.add(5, async (message) => {
+Client.defaultPermissionLevels.add(5, (message) => {
   message.member.roles.highest.position >= 23;
 });
 

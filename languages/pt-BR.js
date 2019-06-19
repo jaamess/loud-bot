@@ -4,6 +4,14 @@ module.exports = class extends Language {
   constructor(...args) {
     super(...args);
     this.language = {
+      /*
+      *
+      * Start of custom language strings
+      *
+      */
+      // Language Command
+      COMMAND_LANGUAGE_SUCCESS: (language) => `O idioma deste servidor foi definido como ${language}.`,
+
       DEFAULT: (key) => `${key} ainda não foi localizado para o Português.`,
       DEFAULT_LANGUAGE: 'Default Language',
       PREFIX_REMINDER: (prefix = `@${this.client.user.tag}`) => `O prefixo neste servidor é \`${prefix}\``,

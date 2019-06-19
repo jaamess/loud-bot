@@ -20,7 +20,7 @@ module.exports = class extends Command {
       .setColor('#1a9901')
       .setTitle(`Configuração`)
       .setThumbnail(message.guild.iconURL())
-      .setDescription(`O idioma da guilda foi definido como \`${newLanguage}\``);
+      .setDescription(message.language.get('COMMAND_LANGUAGE_SUCCESS', newLanguage));
 
     message.send(embed);
   }

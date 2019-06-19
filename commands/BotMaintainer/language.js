@@ -14,7 +14,7 @@ module.exports = class extends Command {
   }
 
   async run(message, language) {
-    this.parseLanguage(language[0]);
+    this.parseLanguage(message, language[0]);
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
@@ -25,7 +25,7 @@ module.exports = class extends Command {
     message.send(embed);
   }
 
-  parseLanguage(rawLanguage) {
+  parseLanguage(message, rawLanguage) {
     switch (rawLanguage) {
       case 'portugues':
       case 'português':

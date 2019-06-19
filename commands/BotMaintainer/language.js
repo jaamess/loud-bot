@@ -25,17 +25,17 @@ module.exports = class extends Command {
     message.send(embed);
   }
 
-  parseLanguage(message, rawLanguage) {
+  async parseLanguage(message, rawLanguage) {
     switch (rawLanguage) {
       case 'portugues':
       case 'português':
       case 'portuguese':
-        message.guild.settings.update('language', 'pt-BR');
+        await message.guild.settings.update('language', 'pt-BR');
         break;
       case 'inglês':
       case 'ingles':
       case 'english':
-        newLanguage = message.guild.settings.update('language', 'en-US');
+        await message.guild.settings.update('language', 'en-US');
         break;
       default:
         break;

@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
   async run(message) {
     const embed = new MessageEmbed()
-      .setColor('RANDOM')
+      .setColor('#1a9901')
       .setTitle(`LOUD`)
       .setThumbnail(message.guild.iconURL)
       .setDescription(`Este servidor tem ${message.guild.members.size} membros.`);

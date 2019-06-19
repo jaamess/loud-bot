@@ -6,7 +6,7 @@ module.exports = class extends Language {
     this.language = {
       // Start of custom language strings
       // Language Command
-      COMMAND_LANGUAGE_SUCCESS: (language) => `O idioma deste servidor foi definido como ${language}.`,
+      COMMAND_LANGUAGE_SUCCESS: (language) => `This server's language has been set to ${language}.`,
 
       DEFAULT: (key) => `${key} has not been localized for en-US yet.`,
       DEFAULT_LANGUAGE: 'Default Language',

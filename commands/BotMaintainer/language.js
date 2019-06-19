@@ -14,13 +14,13 @@ module.exports = class extends Command {
   }
 
   async run(message, language) {
-    this.parseLanguage(message, language[0]);
+    const newLanguage = await this.parseLanguage(message, language[0]);
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
       .setTitle(`Configuração`)
       .setThumbnail(message.guild.iconURL())
-      .setDescription(`O idioma da guilda foi definido como \`${message.guild.settings.language}\``);
+      .setDescription(`O idioma da guilda foi definido como \`${newLanguage}\``);
 
     message.send(embed);
   }

@@ -9,7 +9,7 @@ module.exports = class extends Command {
       runIn: ['text'],
       cooldown: 0,
       deletable: false,
-      permissionLevel: 0,
+      permissionLevel: 5,
       subcommands: false,
       description: 'Mostra a quantidade de membros no servidor',
     });

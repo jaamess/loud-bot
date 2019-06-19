@@ -32,13 +32,13 @@ module.exports = class extends Command {
       case 'portugues':
       case 'português':
       case 'portuguese':
-        return 'pt-BR';
+        'pt-BR';
       case 'inglês':
       case 'ingles':
       case 'english':
-        return 'en-US';
+        'en-US';
       default:
-        return 'en-US';
+        'en-US';
     }
   }
 };

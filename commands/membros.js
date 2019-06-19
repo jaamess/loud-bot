@@ -4,7 +4,7 @@ const { MessageEmbed } = require('discord.js');
 module.exports = class extends Command {
   constructor(...args) {
     super(...args, {
-      name: 'members',
+      name: 'membros',
       enabled: true,
       runIn: ['text'],
       cooldown: 0,
@@ -16,16 +16,11 @@ module.exports = class extends Command {
   }
 
   async run(message) {
-    const bots = message.guild.members.map((m) => m.user.bot);
-    var botMembers;
-    for (const bot of bots) {
-      if (bot === 'true') botMembers.push(bot);
-    }
     const embed = new MessageEmbed()
       .setColor('RANDOM')
       .setTitle(`LOUD`)
       .setThumbnail(message.guild.iconURL)
-      .setDescription(`Este servidor tem ${message.guild.members.size} membros. Dos quais ${botMembers.size} são bots.`);
+      .setDescription(`Este servidor tem ${message.guild.members.size} membros.`);
 
     message.send(embed);
   }

@@ -14,7 +14,8 @@ module.exports = class extends Command {
   }
 
   async run(message, language) {
-    const lang = language === 'portugues' ? 'pt-BR' : 'en-US';
+    const lang = this.parseLanguage(language);
+
     message.guild.settings.update('language', lang);
 
     const embed = new MessageEmbed()
@@ -24,5 +25,20 @@ module.exports = class extends Command {
       .setDescription(`O idioma da guilda foi definido como \`${message.guild.settings.language}\``);
 
     message.send(embed);
+  }
+
+  parseLanguage(language) {
+    switch (language) {
+      case 'portugues':
+      case 'português':
+      case 'portuguese':
+        return (lang = 'pt-BR');
+      case 'inglês':
+      case 'ingles':
+      case 'english':
+        return (lang = 'en-US');
+      default:
+        return (lang = 'en-US');
+    }
   }
 };

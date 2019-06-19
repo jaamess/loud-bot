@@ -14,9 +14,7 @@ module.exports = class extends Command {
   }
 
   async run(message, language) {
-    const lang = this.parseLanguage(language);
-
-    message.guild.settings.update('language', lang);
+    this.parseLanguage(language);
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
@@ -32,13 +30,15 @@ module.exports = class extends Command {
       case 'portugues':
       case 'português':
       case 'portuguese':
-        'pt-BR';
+        message.guild.settings.update('language', 'pt-BR');
+        break;
       case 'inglês':
       case 'ingles':
       case 'english':
-        'en-US';
+        message.guild.settings.update('language', 'en-US');
+        break;
       default:
-        'en-US';
+				break;
     }
   }
 };

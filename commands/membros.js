@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
   async run(message) {
     const bots = message.guild.members.map((m) => m.user.bot);
-    let botMembers;
+    var botMembers;
     for (const bot of bots) {
       if (bot === 'true') botMembers.push(bot);
     }

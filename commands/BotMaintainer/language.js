@@ -35,10 +35,12 @@ module.exports = class extends Command {
       case 'inglês':
       case 'ingles':
       case 'english':
-        message.guild.settings.update('language', 'en-US');
+        newLanguage = message.guild.settings.update('language', 'en-US');
         break;
       default:
         break;
     }
+
+    return message.guild.settings.language;
   }
 };

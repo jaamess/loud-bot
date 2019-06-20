@@ -17,15 +17,15 @@ module.exports = class extends Command {
 
   async run(message, newPrefix) {
     const oldPrefix = message.guild.settings.prefix;
-    if (oldPrefix === newPrefix) return message.send('O prefixo da guilda já é este, não há nada pra mudar.');
+    if (oldPrefix === newPrefix[0]) return message.send('O prefixo da guilda já é este, não há nada pra mudar.');
 
-    message.guild.settings.update('prefix', newPrefix);
+    message.guild.settings.update('prefix', newPrefix[0]);
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
       .setTitle(`Configuração`)
       .setThumbnail(message.guild.iconURL())
-      .setDescription(`O novo prefixo é \`${message.guild.settings.prefix}\``);
+      .setDescription(`O novo prefixo é \`${newPrefix[0]}\``);
 
     message.send(embed);
   }

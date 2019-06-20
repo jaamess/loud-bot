@@ -5,6 +5,7 @@ module.exports = class extends Command {
   constructor(...args) {
     super(...args, {
       name: 'prefix',
+      quotedStringSupport: true,
       enabled: true,
       runIn: ['text'],
       cooldown: 0,

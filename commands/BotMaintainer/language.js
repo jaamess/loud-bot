@@ -5,6 +5,7 @@ module.exports = class extends Command {
   constructor(...args) {
     super(...args, {
       name: 'language',
+      aliases: ['idioma'],
       enabled: true,
       cooldown: 0,
       permissionLevel: 6,

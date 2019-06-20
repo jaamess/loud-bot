@@ -5,14 +5,14 @@ module.exports = class extends Language {
     super(...args);
     this.language = {
       /*
-      *
-      * Start of custom language strings
-      *
-      */
+       *
+       * Start of custom language strings
+       *
+       */
       // Language Command
       COMMAND_LANGUAGE_SUCCESS: (language) => `O idioma deste servidor foi definido como ${language}.`,
 
-      DEFAULT: (key) => `${key} ainda não foi localizado para o Português.`,
+      DEFAULT: (key) => `${key} ainda não foi traduzido para o Português.`,
       DEFAULT_LANGUAGE: 'Default Language',
       PREFIX_REMINDER: (prefix = `@${this.client.user.tag}`) => `O prefixo neste servidor é \`${prefix}\``,
       SETTING_GATEWAY_EXPECTS_GUILD: 'The parameter <Guild> expects either a Guild or a Guild Object.',
@@ -62,14 +62,14 @@ module.exports = class extends Language {
           '**, **'
         )}** to cancel this prompt.`,
       MONITOR_COMMAND_HANDLER_ABORTED: 'Aborted',
-      INHIBITOR_COOLDOWN: (remaining) => `You have just used this command. You can use this command again in ${remaining} second${remaining === 1 ? '' : 's'}.`,
+      INHIBITOR_COOLDOWN: (remaining) => `Você acabou de usar este comando. Você poderá usá-lo novamente em ${remaining} segundo${remaining === 1 ? '' : 's'}.`,
       INHIBITOR_DISABLED_GUILD: 'Este comando foi desativado nesta guilda.',
       INHIBITOR_DISABLED_GLOBAL: 'Este comando foi desativado pelo administrador do bot.',
       INHIBITOR_MISSING_BOT_PERMS: (missing) => `Insufficient permissions, missing: **${missing}**`,
       INHIBITOR_NSFW: 'You can only use NSFW commands in NSFW channels.',
-      INHIBITOR_PERMISSIONS: 'You do not have permission to use this command.',
+      INHIBITOR_PERMISSIONS: 'Você não tem permissão para usar este comando, entre em contato com um administrador.',
       INHIBITOR_REQUIRED_SETTINGS: (settings) => `The guild is missing the **${settings.join(', ')}** guild setting${settings.length !== 1 ? 's' : ''} and thus the command cannot run.`,
-      INHIBITOR_RUNIN: (types) => `This command is only available in ${types} channels.`,
+      INHIBITOR_RUNIN: (types) => `Este comand só está disponível em canais do tipo ${types}.`,
       INHIBITOR_RUNIN_NONE: (name) => `The ${name} command is not configured to run in any channel.`,
       COMMAND_BLACKLIST_DESCRIPTION: 'Blacklists or un-blacklists users and guilds from the bot.',
       COMMAND_BLACKLIST_SUCCESS: (usersAdded, usersRemoved, guildsAdded, guildsRemoved) =>

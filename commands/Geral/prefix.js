@@ -8,25 +8,29 @@ module.exports = class extends Command {
       quotedStringSupport: true,
       enabled: true,
       runIn: ['text'],
-      cooldown: 0,
+      cooldown: 10,
       deletable: false,
       permissionLevel: 6,
-      usage: '<prefixo:string>',
+      usage: '[prefixo:str]',
       description: 'Muda o prefixo do bot no servidor.',
     });
   }
 
   async run(message, newPrefix) {
     const oldPrefix = message.guild.settings.prefix;
-    if (oldPrefix === newPrefix.join()) return message.send('O prefixo da guilda já é este, não há nada pra mudar.');
+    if (oldPrefix === newPrefix[0]) return message.send('O prefixo da guilda já é este, não há nada pra mudar.');
+    if (!newPrefix[0]) {
+      message.send(message.language.get('COMMAND_PREFIX_RESET'));
+      message.guild.settings.reset('prefix');
+    }
 
-    message.guild.settings.update('prefix', newPrefix.join());
+    message.guild.settings.update('prefix', newPrefix[0]);
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
-      .setTitle(`Configuração`)
+      .setTitle(message.language.get('SETTINGS'))
       .setThumbnail(message.guild.iconURL())
-      .setDescription(`O novo prefixo é \`${newPrefix.join()}\``);
+      .setDescription(message.language.get('COMMAND_PREFIX_SUCCESS', newPrefix[0]));
 
     message.send(embed);
   }

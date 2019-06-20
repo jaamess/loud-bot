@@ -5,8 +5,16 @@ module.exports = class extends Language {
     super(...args);
     this.language = {
       // Start of custom language strings
+
+      // Miscellaneous
+      SETTINGS: 'Settings',
+
       // Language Command
       COMMAND_LANGUAGE_SUCCESS: (language) => `This server's language has been set to ${language}.`,
+
+      // Prefix Command
+      COMMAND_PREFIX_RESET: 'The bot\'s prefix has been reset successfully. The prefix is: `loud `.',
+      COMMAND_PREFIX_SUCCESS: (prefix) => `The bot's prefix in this server has been set to: ${prefix}`,
 
       DEFAULT: (key) => `${key} has not been localized for en-US yet.`,
       DEFAULT_LANGUAGE: 'Default Language',

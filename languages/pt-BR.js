@@ -9,8 +9,15 @@ module.exports = class extends Language {
        * Start of custom language strings
        *
        */
+      // Miscellaneous
+      SETTINGS: 'Configurações',
+
       // Language Command
       COMMAND_LANGUAGE_SUCCESS: (language) => `O idioma deste servidor foi definido como ${language}.`,
+
+      // Prefix Command
+      COMMAND_PREFIX_RESET: 'O prefixo foi resetado com sucesso. Agora é: `loud `.',
+      COMMAND_PREFIX_SUCCESS: (prefix) => `O prefixo neste servidor foi definido como: ${prefix}`,
 
       DEFAULT: (key) => `${key} ainda não foi traduzido para o Português.`,
       DEFAULT_LANGUAGE: 'Default Language',

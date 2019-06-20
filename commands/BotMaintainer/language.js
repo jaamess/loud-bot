@@ -20,7 +20,7 @@ module.exports = class extends Command {
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
-      .setTitle(`Configuração`)
+      .setTitle(message.language.get('SETTINGS'))
       .setThumbnail(message.guild.iconURL())
       .setDescription(responseString);
 

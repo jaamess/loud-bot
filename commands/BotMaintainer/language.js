@@ -15,12 +15,13 @@ module.exports = class extends Command {
 
   async run(message, language) {
     const newLanguage = await this.parseLanguage(message, language[0]);
+    const responseString = await message.language.get('COMMAND_LANGUAGE_SUCCESS', newLanguage);
 
     const embed = new MessageEmbed()
       .setColor('#1a9901')
       .setTitle(`Configuração`)
       .setThumbnail(message.guild.iconURL())
-      .setDescription(message.language.get('COMMAND_LANGUAGE_SUCCESS', newLanguage));
+      .setDescription(responseString);
 
     message.send(embed);
   }

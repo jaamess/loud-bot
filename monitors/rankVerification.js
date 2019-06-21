@@ -58,7 +58,8 @@ module.exports = class extends Monitor {
       setTimeout(() => {
         errorMessage.delete();
       }, 6500);
-      return message.delete();
+      if (!message.member.roles.highest.position >= 20) message.delete();
+      return;
     }
     // End of optical character recognition
     // Start of rank determination

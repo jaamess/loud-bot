@@ -51,10 +51,10 @@ module.exports = class extends Monitor {
     const index = split.indexOf('top');
     const score = split[index - 1];
     if (!score) return message.react(`❌`);
-    console.log(score);
     // End of optical character recognition
     // Start of rank determination
     const rank = await this.parseRank(parseInt(score));
+    console.log(`Detected score: ${score}, and rank: ${rank}`);
     // End of rank determination
     // Now we react to the image with the appropriate emoji
     // Note that these emojis only exist in the server this bot was made for,

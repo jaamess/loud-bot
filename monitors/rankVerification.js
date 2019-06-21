@@ -26,7 +26,7 @@ module.exports = class extends Monitor {
   async run(message) {
     ///////////////////////////
     // Checking if its the right channel and if there's an image attached to it
-    if (message.channel.id !== '5914061263237') return;
+    if (message.channel.id !== '591524061859807253') return;
     const screenshot = message.attachments.map((m) => m.attachment);
     if (!screenshot.length) {
       const response = await message.send(':warning:  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
@@ -58,7 +58,7 @@ module.exports = class extends Monitor {
       setTimeout(() => {
         errorMessage.delete();
       }, 6500);
-      if (!message.member.roles.highest.position >= 20) message.delete();
+      if (message.member.roles.highest.position < 28) message.delete();
       return;
     }
     // End of optical character recognition
@@ -134,8 +134,10 @@ module.exports = class extends Monitor {
      * @param {import('klasa').KlasaMessage} message
      */
     function addRole(message, rank) {
+      console.log('called function');
+      console.log(rank);
       if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position) return message.send(`:warning:  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
-      message.member.roles.add(rank);
+      return message.member.roles.add(rank);
     }
   }
 };

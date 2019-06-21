@@ -52,11 +52,13 @@ module.exports = class extends Monitor {
     const score = split[index - 1];
     if (!score) {
       working.delete().catch(() => console.log(`working.delete`));
-      const errorMessage = await message
-        .send(`:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.`)
-        .catch(() => console.log(`errorMessage`));
-      errorMessage.delete(5000);
-      return message.react(`❌`);
+      const errorMessage = await message.send(
+        `:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.`
+      );
+      setTimeout(() => {
+        errorMessage.delete();
+      }, 5000);
+      return message.delete();
     }
     // End of optical character recognition
     // Start of rank determination

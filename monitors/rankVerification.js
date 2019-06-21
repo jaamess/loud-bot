@@ -51,8 +51,8 @@ module.exports = class extends Monitor {
     const index = split.indexOf('top');
     const score = split[index - 1];
     if (!score) {
-      working.delete().catch(() => console.log(`working.delete`));
-      const errorMessage = await message.send(
+      working.delete();
+      const errorMessage = await message.channel.send(
         `:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.`
       );
       setTimeout(() => {

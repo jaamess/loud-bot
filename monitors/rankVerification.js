@@ -90,7 +90,7 @@ module.exports = class extends Monitor {
     if (score >= 3200) rank = 'Mestre';
     else if (score >= 3050) rank = 'Diamante VI';
     else if (score >= 2900) rank = 'Diamante III';
-    else if (score >= 1750) rank = 'Diamante II';
+    else if (score >= 2750) rank = 'Diamante II';
     else if (score >= 2600) rank = 'Diamante I';
     else if (score >= 2475) rank = 'Platina VI';
     else if (score >= 2350) rank = 'Platina III';

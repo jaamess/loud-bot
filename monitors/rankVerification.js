@@ -31,7 +31,7 @@ module.exports = class extends Monitor {
     if (!screenshot.length) {
       if (message.member.roles.highest.position < 28) {
         message.delete();
-        const response = await message.send(':loudwarning:  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
+        const response = await message.send('<:loudwarning:591525783994892288>  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
         setTimeout(() => {
           response.delete();
         }, 5000);
@@ -56,7 +56,7 @@ module.exports = class extends Monitor {
     if (!score) {
       working.delete();
       const errorMessage = await message.channel.send(
-        `:loudwarning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.**`
+        `<:loudwarning:591525783994892288>  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.**`
       );
       setTimeout(() => {
         errorMessage.delete();
@@ -137,7 +137,7 @@ module.exports = class extends Monitor {
      * @param {import('klasa').KlasaMessage} message
      */
     function addRole(message, rank) {
-      if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position) return message.send(`:loudwarning:  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
+      if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position) return message.send(`<:loudwarning:591525783994892288>  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
       return message.member.roles.add(rank);
     }
   }

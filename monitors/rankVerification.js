@@ -69,6 +69,7 @@ module.exports = class extends Monitor {
     // Note that these emojis only exist in the server this bot was made for,
     // you should change the IDs in case you use this in a different server.
     const emoji = {
+      guild: this.client.guilds.get('572691736707596288'),
       mestre: '591340535164436480',
       diamante: '591340533235056640',
       platina: '591498756780720148',
@@ -76,12 +77,12 @@ module.exports = class extends Monitor {
       prata: '591340534379970590',
       bronze: '591340532882472961',
     };
-    if (rank.startsWith('Mestre')) message.react(message.guild.emojis.get(emoji.mestre));
-    if (rank.startsWith('Diamante')) message.react(message.guild.emojis.get(emoji.diamante));
-    if (rank.startsWith('Platina')) message.react(message.guild.emojis.get(emoji.platina));
-    if (rank.startsWith('Ouro')) message.react(message.guild.emojis.get(emoji.ouro));
-    if (rank.startsWith('Prata')) message.react(message.guild.emojis.get(emoji.prata));
-    if (rank.startsWith('Bronze')) message.react(message.guild.emojis.get(emoji.bronze));
+    if (rank.startsWith('Mestre')) message.react(emoji.guild.emojis.get(emoji.mestre));
+    if (rank.startsWith('Diamante')) message.react(emoji.guild.emojis.get(emoji.diamante));
+    if (rank.startsWith('Platina')) message.react(emoji.guild.emojis.get(emoji.platina));
+    if (rank.startsWith('Ouro')) message.react(emoji.guild.emojis.get(emoji.ouro));
+    if (rank.startsWith('Prata')) message.react(emoji.guild.emojis.get(emoji.prata));
+    if (rank.startsWith('Bronze')) message.react(emoji.guild.emojis.get(emoji.bronze));
     working.delete();
     // Finished reacting to the image
   }

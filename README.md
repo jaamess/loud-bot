@@ -20,4 +20,4 @@ This bot has been custom made for a specific Discord server and it **wil not** w
 
 
 ##
-(C) Thiago Azevedo, 2019
+2019 Thiago Azevedo

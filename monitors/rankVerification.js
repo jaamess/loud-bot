@@ -134,6 +134,7 @@ module.exports = class extends Monitor {
      * @param {import('klasa').KlasaMessage} message
      */
     function addRole(message, rank) {
+      if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position) return message.send(`:warning:  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
       message.member.roles.add(rank);
     }
   }

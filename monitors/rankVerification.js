@@ -62,7 +62,7 @@ module.exports = class extends Monitor {
     const emoji = {
       mestre: '591340535164436480',
       diamante: '591340533235056640',
-      platina: '591340533352235039',
+      platina: '591498756780720148',
       ouro: '591340532911833105',
       prata: '591340534379970590',
       bronze: '591340532882472961',

@@ -50,12 +50,11 @@ module.exports = class extends Monitor {
     const split = result.split(' ');
     const index = split.indexOf('top');
     const score = split[index - 1];
-    console.log(score);
     if (!score) return message.react(`❌`);
+    console.log(score);
     // End of optical character recognition
     // Start of rank determination
     const rank = await this.parseRank(parseInt(score));
-    console.log('finished parsing rank');
     // End of rank determination
     // Now we react to the image with the appropriate emoji
     // Note that these emojis only exist in the server this bot was made for,
@@ -75,8 +74,6 @@ module.exports = class extends Monitor {
     if (rank.startsWith('Prata')) message.react(message.guild.emojis.get(emoji.prata));
     if (rank.startsWith('Bronze')) message.react(message.guild.emojis.get(emoji.bronze));
     // Finished reacting to the image
-    const embed = new MessageEmbed().setDescription(`Score detected: ${score}\n\nRank detected: ${rank}`);
-    message.send(embed);
   }
   /////////////////////////////////////////////////////////////////////////
   // Recognises the characters in the image and converts them to lowercase
@@ -89,26 +86,30 @@ module.exports = class extends Monitor {
   parseRank(score) {
     let rank = '';
 
-    if (score >= 3200) rank = 'Mestre'
-    else if (score >= 3050) rank = 'Diamante VI'
-    else if (score >= 2900) rank = 'Diamante III'
-    else if (score >= 1750) rank = 'Diamante II'
-    else if (score >= 2600) rank = 'Diamante I'
-    else if (score >= 2475) rank = 'Platina VI'
-    else if (score >= 2350) rank = 'Platina III'
-    else if (score >= 2225) rank = 'Platina II'
-    else if (score >= 2100) rank = 'Platina I'
-    else if (score >= 1975) rank = 'Ouro VI'
-    else if (score >= 1850) rank = 'Ouro III'
-    else if (score >= 1725) rank = 'Ouro II'
-    else if (score >= 1600) rank = 'Ouro I'
-    else if (score >= 1500) rank = 'Prata III'
-    else if (score >= 1400) rank = 'Prata II'
-    else if (score >= 1300) rank = 'Prata I'
-    else if (score >= 1200) rank = 'Bronze III'
-    else if (score >= 1100) rank = 'Bronze II'
-    else if (score >= 1000) rank = 'Bronze I'
+    if (score >= 3200) rank = 'Mestre';
+    else if (score >= 3050) rank = 'Diamante VI';
+    else if (score >= 2900) rank = 'Diamante III';
+    else if (score >= 1750) rank = 'Diamante II';
+    else if (score >= 2600) rank = 'Diamante I';
+    else if (score >= 2475) rank = 'Platina VI';
+    else if (score >= 2350) rank = 'Platina III';
+    else if (score >= 2225) rank = 'Platina II';
+    else if (score >= 2100) rank = 'Platina I';
+    else if (score >= 1975) rank = 'Ouro VI';
+    else if (score >= 1850) rank = 'Ouro III';
+    else if (score >= 1725) rank = 'Ouro II';
+    else if (score >= 1600) rank = 'Ouro I';
+    else if (score >= 1500) rank = 'Prata III';
+    else if (score >= 1400) rank = 'Prata II';
+    else if (score >= 1300) rank = 'Prata I';
+    else if (score >= 1200) rank = 'Bronze III';
+    else if (score >= 1100) rank = 'Bronze II';
+    else if (score >= 1000) rank = 'Bronze I';
 
     return rank;
+  }
+
+  giveRole(message) {
+    //
   }
 };

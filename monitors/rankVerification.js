@@ -29,11 +29,13 @@ module.exports = class extends Monitor {
     if (message.channel.id !== '591524061859807253') return;
     const screenshot = message.attachments.map((m) => m.attachment);
     if (!screenshot.length) {
-      const response = await message.send(':warning:  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
-      setTimeout(() => {
-        response.delete();
-      }, 5000);
-      if (message.member.roles.highest.position < 28) message.delete();
+      if (message.member.roles.highest.position < 28) {
+        message.delete();
+        const response = await message.send(':warning:  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
+        setTimeout(() => {
+          response.delete();
+        }, 5000);
+      }
       return;
     }
     ///////////////////////////
@@ -135,8 +137,6 @@ module.exports = class extends Monitor {
      * @param {import('klasa').KlasaMessage} message
      */
     function addRole(message, rank) {
-      console.log('called function');
-      console.log(rank);
       if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position) return message.send(`:warning:  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
       return message.member.roles.add(rank);
     }

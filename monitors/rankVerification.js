@@ -45,7 +45,7 @@ module.exports = class extends Monitor {
      * command once, therefore we give them a cooldown of at least 2 days to give them
      * enought time to forget about it.
      */
-    message.send('Working...');
+    const working = await message.send('Verificando patente...');
     const result = await this.parseImage(screenshot);
     const split = result.split(' ');
     const index = split.indexOf('top');
@@ -73,6 +73,7 @@ module.exports = class extends Monitor {
     if (rank.startsWith('Ouro')) message.react(message.guild.emojis.get(emoji.ouro));
     if (rank.startsWith('Prata')) message.react(message.guild.emojis.get(emoji.prata));
     if (rank.startsWith('Bronze')) message.react(message.guild.emojis.get(emoji.bronze));
+    working.delete();
     // Finished reacting to the image
   }
   /////////////////////////////////////////////////////////////////////////

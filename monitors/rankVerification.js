@@ -57,7 +57,7 @@ module.exports = class extends Monitor {
       );
       setTimeout(() => {
         errorMessage.delete();
-      }, 5000);
+      }, 6500);
       return message.delete();
     }
     // End of optical character recognition

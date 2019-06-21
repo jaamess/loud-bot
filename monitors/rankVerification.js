@@ -33,7 +33,8 @@ module.exports = class extends Monitor {
       setTimeout(() => {
         response.delete();
       }, 5000);
-      return message.delete();
+      if (message.member.roles.highest.position < 28) message.delete();
+      return;
     }
     ///////////////////////////
     /*

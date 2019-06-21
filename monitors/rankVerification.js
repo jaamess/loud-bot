@@ -53,7 +53,7 @@ module.exports = class extends Monitor {
     if (!score) {
       working.delete();
       const errorMessage = await message.channel.send(
-        `:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.`
+        `:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.**`
       );
       setTimeout(() => {
         errorMessage.delete();

@@ -55,7 +55,7 @@ module.exports = class extends Monitor {
       const errorMessage = await message.send(
         `:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.`
       );
-      errorMessage.delete({ timeout: 5000 });
+      errorMessage.delete(5000);
       return message.react(`❌`);
     }
     // End of optical character recognition

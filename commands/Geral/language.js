@@ -19,7 +19,7 @@ module.exports = class extends Command {
     const responseString = await message.language.get('COMMAND_LANGUAGE_SUCCESS', newLanguage);
 
     const embed = new MessageEmbed()
-      .setColor('#1a9901')
+      .setColor('#39d52d')
       .setTitle(message.language.get('SETTINGS'))
       .setThumbnail(message.guild.iconURL())
       .setDescription(responseString);

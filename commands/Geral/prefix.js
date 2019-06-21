@@ -27,7 +27,7 @@ module.exports = class extends Command {
     message.guild.settings.update('prefix', newPrefix[0]);
 
     const embed = new MessageEmbed()
-      .setColor('#1a9901')
+      .setColor('#39d52d')
       .setTitle(message.language.get('SETTINGS'))
       .setThumbnail(message.guild.iconURL())
       .setDescription(message.language.get('COMMAND_PREFIX_SUCCESS', newPrefix[0]));

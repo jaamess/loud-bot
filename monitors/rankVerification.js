@@ -86,6 +86,8 @@ module.exports = class extends Monitor {
     if (rank.startsWith('Bronze')) message.react(emoji.guild.emojis.get(emoji.bronze));
     working.delete();
     // Finished reacting to the image
+    // Gives the user their role
+    return this.giveRole(message, rank);
   }
   /////////////////////////////////////////////////////////////////////////
   // Recognises the characters in the image and converts them to lowercase
@@ -121,7 +123,18 @@ module.exports = class extends Monitor {
     return rank;
   }
 
-  giveRole(message) {
-    //
+  giveRole(message, rank) {
+    if (rank.startsWith('Bronze')) return addRole(message, '591514831782412288');
+    if (rank.startsWith('Prata')) return addRole(message, '591514826719625218');
+    if (rank.startsWith('Ouro')) return addRole(message, '591514820734615562');
+    if (rank.startsWith('Platina')) return addRole(message, '591514823733542912');
+    if (rank.startsWith('Diamante')) return addRole(message, '591514817228046406');
+    if (rank.startsWith('Mestre')) return addRole(message, '591514813872603136');
+    /**
+     * @param {import('klasa').KlasaMessage} message
+     */
+    function addRole(message, rank) {
+      message.member.roles.add(rank);
+    }
   }
 };

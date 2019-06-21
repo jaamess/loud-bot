@@ -26,7 +26,7 @@ module.exports = class extends Monitor {
   async run(message) {
     ///////////////////////////
     // Checking if its the right channel and if there's an image attached to it
-    if (message.channel.id !== '591340583159595028') return;
+    if (message.channel.id !== '591524061859807253') return;
     const screenshot = message.attachments.map((m) => m.attachment);
     if (!screenshot.length) {
       if (message.member.roles.highest.position < 28) {

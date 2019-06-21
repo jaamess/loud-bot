@@ -50,7 +50,14 @@ module.exports = class extends Monitor {
     const split = result.split(' ');
     const index = split.indexOf('top');
     const score = split[index - 1];
-    if (!score) return message.react(`❌`);
+    if (!score) {
+      working.delete();
+      const errorMessage = await message.send(
+        `:warning:  **|  Não foi possível verificar sua patente. Verifique se a captura de tela está correta e/ou tente novamente com uma imagem de maior qualidade.`
+      );
+      errorMessage.delete({ timeout: 5000 });
+      return message.react(`❌`);
+    }
     // End of optical character recognition
     // Start of rank determination
     const rank = await this.parseRank(parseInt(score));

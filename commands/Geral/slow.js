@@ -17,8 +17,7 @@ module.exports = class extends Command {
   }
 
   async run(message, [channel, duration]) {
-    parseTime(duration);
-    channel.setRateLimitPerUser(duration, 'Modo slow customizado');
+    channel.setRateLimitPerUser(parseTime(duration), 'Modo slow customizado');
 
     const embed = new MessageEmbed()
       .setColor('#39d52d')

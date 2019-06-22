@@ -17,7 +17,7 @@ module.exports = class extends Command {
   }
 
   async run(message, [channel, duration]) {
-    const time = await parseTime(duration);
+    const time = (await parseTime(duration)) / 1000;
     channel.setRateLimitPerUser(time, 'Modo slow customizado');
 
     const embed = new MessageEmbed()

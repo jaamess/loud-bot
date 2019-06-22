@@ -89,7 +89,11 @@ module.exports = class extends Monitor {
     // Delete the message that says we're processing the image
     working.delete();
     // Finished reacting to the image
-    // Gives the user their role
+    // Gives the user their role, after removing their old role.
+    const freeFireRoles = ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136'];
+    freeFireRoles.forEach((i) => {
+      if (message.member.roles.has(i)) await message.member.roles.remove(i);
+    });
     return this.giveRole(message, rank);
   }
   /////////////////////////////////////////////////////////////////////////
@@ -137,7 +141,8 @@ module.exports = class extends Monitor {
      * @param {import('klasa').KlasaMessage} message
      */
     function addRole(message, rank) {
-      if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position) return message.send(`<:loudwarning:591525783994892288>  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
+      if (message.guild.me.roles.highest.position < message.guild.roles.get(rank).position)
+        return message.send(`<:loudwarning:591525783994892288>  **|  O meu cargo não é alto o suficiente para realizar esta ação.**`);
       return message.member.roles.add(rank);
     }
   }

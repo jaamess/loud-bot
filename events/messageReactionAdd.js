@@ -12,7 +12,7 @@ module.exports = class extends Event {
 
   run(reaction, user) {
     /*
-     * Desativando este evento ate que seja pedido.
+     * Deactivating this event until further notice as per the server's current needs..
      */
     return;
     if (reaction.message.channel.parent.id !== '589243529075752970') return;

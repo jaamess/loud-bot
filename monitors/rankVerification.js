@@ -92,7 +92,7 @@ module.exports = class extends Monitor {
     // Gives the user their role, after removing their old role.
     const freeFireRoles = ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136'];
     freeFireRoles.forEach((i) => {
-      if (message.member.roles.has(i)) await message.member.roles.remove(i);
+      if (message.member.roles.has(i)) message.member.roles.remove(i);
     });
     return this.giveRole(message, rank);
   }

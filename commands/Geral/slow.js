@@ -17,13 +17,14 @@ module.exports = class extends Command {
   }
 
   async run(message, [channel, duration]) {
-    channel.setRateLimitPerUser(parseTime(duration), 'Modo slow customizado');
+		const time = await parseTime(duration);
+    channel.setRateLimitPerUser(time), 'Modo slow customizado');
 
     const embed = new MessageEmbed()
       .setColor('#39d52d')
       .setTitle(message.language.get('SETTINGS'))
       .setThumbnail(message.guild.iconURL())
-      .setDescription(message.language.get('COMMAND_SLOW_SUCCESS', duration));
+      .setDescription(message.language.get('COMMAND_SLOW_SUCCESS', time));
 
     return message.send(embed);
   }

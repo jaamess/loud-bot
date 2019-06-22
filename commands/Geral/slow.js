@@ -11,6 +11,7 @@ module.exports = class extends Command {
       usage: '<Canal:channel> <Tempo:int>',
       usageDelim: ' ',
       description: 'Ativa o modo lento no canal especificado. Permite que o administrador ative o modo slow por quanto tempo quiser, sem depender dos limites do Discord.',
+      extendedHelp: 'Para desativar o modo lento, defina a duração como "0" segundos.',
     });
   }
 

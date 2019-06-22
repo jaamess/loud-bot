@@ -17,7 +17,8 @@ module.exports = class extends Language {
       COMMAND_PREFIX_SUCCESS: (prefix) => `The bot's prefix in this server has been set to: ${prefix}`,
 
       // Slow Command
-      COMMAND_SLOW_SUCCESS: (duration) => `Slow mode has been activated in this channel, with a cooldown of ${duration} seconds per message.`,
+      COMMAND_SLOW_SUCCESS: (duration) =>
+        duration === 0 ? `Slow mode has been activated in this channel, with a cooldown of ${duration} seconds per message.` : `Slow mode has been turned off in this channel!`,
 
       DEFAULT: (key) => `${key} has not been localized for en-US yet.`,
       DEFAULT_LANGUAGE: 'Default Language',

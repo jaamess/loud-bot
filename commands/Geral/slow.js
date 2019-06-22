@@ -14,7 +14,7 @@ module.exports = class extends Command {
     });
   }
 
-  async run(message, channel, duration) {
+  async run(message, [channel, duration]) {
     console.log(channel, duration);
 
     const embed = new MessageEmbed()

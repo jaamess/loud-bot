@@ -9,6 +9,7 @@
   "private": true,
   "dependencies": {
     "discord.js": "discordjs/discord.js",
+    "duration-parser": "^1.0.2",
     "klasa": "dirigeants/klasa",
     "tesseract.js": "^1.0.19"
   },

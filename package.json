@@ -11,5 +11,8 @@
     "discord.js": "discordjs/discord.js",
     "klasa": "dirigeants/klasa",
     "tesseract.js": "^1.0.19"
+  },
+  "engines": {
+    "node": ">=10.0.0"
   }
 }

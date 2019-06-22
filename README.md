@@ -16,7 +16,7 @@
 Please note that for this program to run you must have **Node v10** installed in your machine, for instructions on how to do that, check [this guide](https://blog.teamtreehouse.com/install-node-js-npm-windows) (For Windows, as I assume Linux users should know how to do that).
 ##
 ### Attention:
-This bot has been custom made for a specific Discord server and it **wil not** work properly in any other environment other than the one it was designed for. This software is not meant for public use and should not be shared with third parties.
+This bot has been custom made for a specific Discord server and it **will not** work properly in any other environment other than the one it was designed for. This software is not meant for public use and should not be shared with third parties.
 
 
 ##

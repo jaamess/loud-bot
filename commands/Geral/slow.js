@@ -19,7 +19,7 @@ module.exports = class extends Command {
 
   async run(message, [channel, duration]) {
     const time = (await parseTime(duration)) / 1000;
-    if (time > 21600) return message.send('<:loudwarning:591525783994892288>  **|  Desculpe, não é possível definir o modo lento maior que 6 horas.**');
+    if (time > 21600) return message.send('<:loudwarning:591525783994892288>  **|  Desculpe, não é possível definir o modo lento com cooldown maior que 6 horas.**');
     channel.setRateLimitPerUser(time, 'Modo slow customizado');
 
     const embed = new MessageEmbed()

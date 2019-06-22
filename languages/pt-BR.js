@@ -19,6 +19,9 @@ module.exports = class extends Language {
       COMMAND_PREFIX_RESET: 'O prefixo foi resetado com sucesso. Agora é: `loud `.',
       COMMAND_PREFIX_SUCCESS: (prefix) => `O prefixo neste servidor foi definido como: ${prefix}`,
 
+      // Slow Command
+      COMMAND_SLOW_SUCCESS: (duration) => `O modo lento foi ativado neste canal, com um cooldown de ${duration} segundos por mensagem.`,
+
       DEFAULT: (key) => `${key} ainda não foi traduzido para o Português.`,
       DEFAULT_LANGUAGE: 'Default Language',
       PREFIX_REMINDER: (prefix = `@${this.client.user.tag}`) => `O prefixo neste servidor é \`${prefix}\``,

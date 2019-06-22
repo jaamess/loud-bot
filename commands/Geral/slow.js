@@ -15,7 +15,7 @@ module.exports = class extends Command {
   }
 
   async run(message, [channel, duration]) {
-    console.log(channel, duration);
+    channel.setRateLimitPerUser(duration, 'Modo slow customizado');
 
     const embed = new MessageEmbed()
       .setColor('#39d52d')
@@ -23,6 +23,6 @@ module.exports = class extends Command {
       .setThumbnail(message.guild.iconURL())
       .setDescription(message.language.get('COMMAND_SLOW_SUCCESS', duration));
 
-    message.send(embed);
+    return message.send(embed);
   }
 };

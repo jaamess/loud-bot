@@ -20,7 +20,7 @@ module.exports = class extends Language {
       COMMAND_PREFIX_SUCCESS: (prefix) => `O prefixo neste servidor foi definido como: ${prefix}`,
 
       // Slow Command
-      COMMAND_SLOW_SUCCESS: (duration) => duration === 0 ? `O modo lento foi ativado neste canal, com um cooldown de ${duration} segundos por mensagem.` : `O modo lento neste canal foi desativado!`,
+      COMMAND_SLOW_SUCCESS: (duration) => duration !== 0 ? `O modo lento foi ativado neste canal, com um cooldown de ${duration} segundos por mensagem.` : `O modo lento neste canal foi desativado!`,
 
       DEFAULT: (key) => `${key} ainda não foi traduzido para o Português.`,
       DEFAULT_LANGUAGE: 'Default Language',

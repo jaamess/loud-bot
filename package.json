@@ -4,8 +4,9 @@
   "description": "Custom bot for LOUD's discord server",
   "main": "index.js",
   "repository": "https://github.com/jaamess/loud-bot.git",
-  "author": "James <thiagozevedo3@gmail.com>",
-  "license": "GNU",
+  "author": "James <thiagozevedo3@gmail.com> (https://github.com/jaamess)",
+  "license": "GPL-2.0-only",
+  "private": true,
   "dependencies": {
     "discord.js": "discordjs/discord.js",
     "klasa": "dirigeants/klasa",

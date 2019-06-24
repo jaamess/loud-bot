@@ -9,7 +9,7 @@ module.exports = class extends Command {
       enabled: true,
       runIn: ['text'],
       permissionLevel: 6,
-      usage: '<Canal:channel> <Tempo:string>',
+      usage: '<canal:channel> <tempo:string>',
       usageDelim: ' ',
       description: 'Ativa o modo lento no canal especificado. Permite que o administrador ative o modo slow por quanto tempo quiser, sem depender dos limites do Discord.',
       extendedHelp:

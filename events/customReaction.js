@@ -11,6 +11,12 @@ module.exports = class extends Event {
   }
 
   async run(message, keyword) {
-    console.log(`Event emitted. Keyword: "${keyword}".`);
+    switch (keyword) {
+      case 'test':
+        message.channel.send(':white_check_mark:  **|  Tested!**');
+        break;
+      default:
+        return null;
+    }
   }
 };

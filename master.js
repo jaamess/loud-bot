@@ -2,8 +2,10 @@ const { KlasaClient } = require('klasa');
 const { prefix, token } = require('./ecosystem.config.json');
 
 // Default Schemas
-KlasaClient.defaultGuildSchema.add('whitelistedChannels', 'channel', { array: true });
-KlasaClient.defaultGuildSchema.add('keywords', 'string', { array: true });
+KlasaClient.defaultGuildSchema
+  .add('whitelistedChannels', 'channel', { array: true })
+  .add('keywords', 'string', { array: true })
+  .add('customReactions', (folder) => folder.add('keyword', 'string', { array: true }).add('response', 'string', { array: true }));
 
 // Permission Levels
 KlasaClient.defaultPermissionLevels

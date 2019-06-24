@@ -16,7 +16,7 @@ module.exports = class extends Language {
       // Config Command
       COMMAND_CONFIG_GENERAL_DESCRIPTION: 'Essas são as configurações gerais do bot neste servidor.',
       COMMAND_CONFIG_REACTION_DESCRIPTION: 'Essas são as configurações do bot neste servidor relacionadas ao recurso de reações customizadas.',
-      COMMAND_CONFIG_REACTION_RESPONSES: (amount) => `Existem ${amount} respostas registradas`,
+      COMMAND_CONFIG_REACTION_RESPONSES: (amount) => (amount ? `Existem ${amount} respostas registradas` : `Nenhuma resposta registrada.`),
 
       // Language Command
       COMMAND_LANGUAGE_SUCCESS: (language) => `O idioma deste servidor foi definido como ${language}.`,
@@ -26,7 +26,7 @@ module.exports = class extends Language {
       COMMAND_PREFIX_SUCCESS: (prefix) => `O prefixo neste servidor foi definido como: ${prefix}`,
 
       // Slow Command
-      COMMAND_SLOW_SUCCESS: (duration) => duration !== 0 ? `O modo lento foi ativado neste canal, com um cooldown de ${duration} segundos por mensagem.` : `O modo lento neste canal foi desativado!`,
+      COMMAND_SLOW_SUCCESS: (duration) => (duration !== 0 ? `O modo lento foi ativado neste canal, com um cooldown de ${duration} segundos por mensagem.` : `O modo lento neste canal foi desativado!`),
 
       DEFAULT: (key) => `${key} ainda não foi traduzido para o Português.`,
       DEFAULT_LANGUAGE: 'Default Language',

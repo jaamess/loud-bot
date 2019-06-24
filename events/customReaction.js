@@ -13,7 +13,7 @@ module.exports = class extends Event {
   async run(message, keyword) {
     const keywords = message.guild.settings.get('customReactions').keywords;
     const index = keywords.indexOf(keyword);
-    const response = customReactions.response[index];
+    const response = message.guild.settings.get('customReactions').response[index];
     if (!response) return message.send('No response');
 
     return message.send(`You said "${keyword}", so I say "${response}"!`);

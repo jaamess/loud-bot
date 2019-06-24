@@ -11,6 +11,12 @@ module.exports = class extends Language {
        */
       // Miscellaneous
       SETTINGS: 'Configurações',
+      LANGUAGE: 'Idioma',
+
+      // Config Command
+      COMMAND_CONFIG_GENERAL_DESCRIPTION: 'Essas são as configurações gerais do bot neste servidor.',
+      COMMAND_CONFIG_REACTION_DESCRIPTION: 'Essas são as configurações do bot neste servidor relacionadas ao recurso de reações customizadas.',
+      COMMAND_CONFIG_REACTION_RESPONSES: (amount) => `Existem ${amount} respostas registradas`,
 
       // Language Command
       COMMAND_LANGUAGE_SUCCESS: (language) => `O idioma deste servidor foi definido como ${language}.`,

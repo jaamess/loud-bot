@@ -8,7 +8,12 @@ module.exports = class extends Language {
 
       // Miscellaneous
       SETTINGS: 'Settings',
+      LANGUAGE: 'Language',
 
+      // Config Command
+      COMMAND_CONFIG_GENERAL_DESCRIPTION: 'These are the general settings of the bot in this server.',
+      COMMAND_CONFIG_REACTION_DESCRIPTION: "These are the bot's settings in this server related to the custom reactions feature.",
+      COMMAND_CONFIG_REACTION_RESPONSES: (amount) => `There are ${amount} registered responses.`,
       // Language Command
       COMMAND_LANGUAGE_SUCCESS: (language) => `This server's language has been set to ${language}.`,
 

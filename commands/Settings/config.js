@@ -34,7 +34,7 @@ module.exports = class extends Command {
       .setDescription(message.language.get('COMMAND_CONFIG_REACTION_DESCRIPTION'))
       .addField('Canais Permitidos', `<#${channels.join('>, <#')}>`)
       .addField('Palavras-Chave', keywords.join(', '))
-      .addField('Respostas', `Existem **${responses.length}** respostas registradas.`);
+      .addField('Respostas', message.language.get('COMMAND_CONFIG_REACTION_RESPONSES', responses.length));
 
     return message.send(embed);
   }

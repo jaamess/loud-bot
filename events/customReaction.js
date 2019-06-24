@@ -11,12 +11,11 @@ module.exports = class extends Event {
   }
 
   async run(message, keyword) {
-    switch (keyword) {
-      case 'test':
-        message.channel.send(':white_check_mark:  **|  Tested!**');
-        break;
-      default:
-        return null;
-    }
+    const customReactions = message.guild.settings.get('customReactions');
+    const index = customReactions.keyword.indexOf(keyword);
+    const response = customReactions.response[index];
+    if (!response) return message.send('No response');
+
+    return message.send(response);
   }
 };

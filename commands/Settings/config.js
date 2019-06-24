@@ -7,11 +7,12 @@ module.exports = class extends Command {
       permissionLevel: 5,
       description: 'Mostra as configurações atuais no servidor',
       extendedHelp: 'config reacoes -> Mostra as configurações atuais para a função de reações customizadas, como canais permitidos e palavras-chave.',
-      usage: '[reacoes]',
+      usage: 'reacoes]',
     });
   }
 
   async run(message, reacoes) {
+    console.log(reacoes);
     if (reacoes) return this.reactionConfig(message);
 
     const embed = new MessageEmbed()

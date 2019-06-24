@@ -17,6 +17,7 @@ module.exports = class extends Command {
    * @param {import('discord.js').GuildChannel} channel
    */
   async run(message, [remove, channel]) {
+    console.log(remove);
     console.log(channel);
     // If remove param is entered, return remove() function instead
     if (remove) return this.remove(message, channel.id);

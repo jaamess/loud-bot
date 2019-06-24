@@ -33,7 +33,7 @@ module.exports = class extends Command {
       .setColor(this.client.settings.colors.LOUD_GREEN)
       .setThumbnail(this.client.settings.images.LOUD_LOGO)
       .setDescription(message.language.get('COMMAND_CONFIG_REACTION_DESCRIPTION'))
-      .addField('Canais Permitidos', `<#${channels.join('>, <#')}>`)
+      .addField('Canais Permitidos', channels.length ? `<#${channels.join('>, <#')}>` : 'Nenhum canal')
       .addField('Palavras-Chave', keywords.join(', '))
       .addField('Respostas', message.language.get('COMMAND_CONFIG_REACTION_RESPONSES', responses.length));
 

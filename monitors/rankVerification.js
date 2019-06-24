@@ -127,7 +127,7 @@ module.exports = class extends Monitor {
     else if (score >= 1100) rank = 'Bronze II';
     else if (score >= 1000) rank = 'Bronze I';
 
-    return rank
+    return rank;
   }
 
   giveRole(message, rank) {

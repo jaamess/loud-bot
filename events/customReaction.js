@@ -12,7 +12,7 @@ module.exports = class extends Event {
   }
 
   async run(message, keyword) {
-    // Getting the keywords and responses from the database.
+    // Getting the keywords and responses from the database:
     // Since the keywords and responses are only added together,
     // their indexes will always match, so we will be using that
     // to match the keywords to their responses

@@ -14,10 +14,9 @@ module.exports = class extends Monitor {
   async run(message) {
     const whiteListedChannels = message.guild.settings.get('whitelistedChannels');
     const keywords = message.guild.settings.get('customReactions').keywords;
-    const messageContent = message.content.split(' ').slice(0)[0];
     if (!whiteListedChannels.includes(message.channel.id)) return;
-    if (!keywords.includes(messageContent)) return;
-    const index = keywords.indexOf(messageContent);
+    if (!keywords.includes(message.content)) return;
+    const index = keywords.indexOf(message.content);
     const keyword = keywords[index];
 
     return this.client.emit('customReaction', message, keyword);

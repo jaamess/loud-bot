@@ -9,7 +9,6 @@ module.exports = class extends Command {
       description: 'Permite definir em quais canais o bot irá responder quando um usuário disser uma das palavras chaves definidas.',
       usage: '[remove] <canal:channel>',
       usageDelim: ' ',
-      subcommands: true,
     });
   }
   /**

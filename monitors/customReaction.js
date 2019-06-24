@@ -13,7 +13,7 @@ module.exports = class extends Monitor {
    */
   async run(message) {
     const whiteListedChannels = message.guild.settings.get('whitelistedChannels');
-    const keywords = message.guild.settings.get('keywords');
+    const keywords = message.guild.settings.get('customReactions').keywords;
     if (!whiteListedChannels.includes(message.channel.id)) return;
     if (!message.content.startsWith(keywords)) return;
     const messageContent = message.content.split(' ').slice(0)[0];

@@ -20,6 +20,6 @@ module.exports = class extends Monitor {
     const index = keywords.indexOf(messageContent);
     const keyword = keywords[index];
 
-    return this.client.events.emit('customReaction', message, keyword);
+    return this.client.emit('customReaction', message, keywords);
   }
 };

@@ -7,7 +7,7 @@ module.exports = class extends Command {
       permissionLevel: 5,
       description: 'Mostra as configurações atuais no servidor',
       extendedHelp: 'config reacoes -> Mostra as configurações atuais para a função de reações customizadas, como canais permitidos e palavras-chave.',
-      usage: 'reacoes]',
+      usage: '[reacoes]',
     });
   }
 

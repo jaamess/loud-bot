@@ -11,8 +11,8 @@ module.exports = class extends Event {
   }
 
   async run(message, keyword) {
-    const customReactions = message.guild.settings.get('customReactions');
-    const index = customReactions.keyword.indexOf(keyword);
+    const keywords = message.guild.settings.get('customReactions').keywords;
+    const index = keywords.indexOf(keyword);
     const response = customReactions.response[index];
     if (!response) return message.send('No response');
 

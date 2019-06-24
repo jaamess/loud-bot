@@ -16,6 +16,6 @@ module.exports = class extends Event {
     const response = customReactions.response[index];
     if (!response) return message.send('No response');
 
-    return message.send(response);
+    return message.send(`You said "${keyword}", so I say "${response}"!`);
   }
 };

@@ -5,6 +5,8 @@ const { prefix, token } = require('./ecosystem.config.json');
 KlasaClient.defaultGuildSchema
   .add('whitelistedChannels', 'channel', { array: true })
   .add('customReactions', (folder) => folder.add('keywords', 'string', { array: true }).add('response', 'string', { array: true }));
+KlasaClient.defaultClientSchema
+  .add('colors', (folder) => folder.add('LOUD_GREEN', 'string').add('LOUD_BLACK', 'string')).add('images', (folder) => folder.add('LOUD_LOGO', 'url'));
 
 // Permission Levels
 KlasaClient.defaultPermissionLevels

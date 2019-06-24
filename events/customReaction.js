@@ -16,13 +16,16 @@ module.exports = class extends Event {
     // Since the keywords and responses are only added together,
     // their indexes will always match, so we will be using that
     // to match the keywords to their responses
-    const keywords = message.guild.settings.get('customReactions').keywords;
+    const keywords = await message.guild.settings.get('customReactions').keywords;
     const index = keywords.indexOf(keyword);
-    const response = message.guild.settings.get('customReactions').response[index];
+    const response = await message.guild.settings.get('customReactions').response[index];
     // If, by any means, we can't get the response, we will just do nothing
     if (!response) return null;
-		const reactionEmbed = new MessageEmbed()
-		.setColor('#39d52d')
+    const reactionEmbed = new MessageEmbed()
+      .setColor(this.client.settings.colors.LOUD_GREEN)
+      .setThumbnail(this.client.settings.images.LOUD_LOGO)
+      .setTitle(`LOUD`)
+      .setDescription(response);
     return message.send(reactionEmbed);
   }
 };

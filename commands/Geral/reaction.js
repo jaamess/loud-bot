@@ -7,7 +7,7 @@ module.exports = class extends Command {
       runIn: ['text'],
       permissionLevel: 6,
       description: 'Permite definir em quais canais o bot irá responder quando um usuário disser uma das palavras chaves definidas.',
-      usage: '[remover] <canal:channel>',
+      usage: '[remove] <canal:channel>',
       usageDelim: ' ',
       subcommands: true,
     });
@@ -16,7 +16,7 @@ module.exports = class extends Command {
    * @param {import('klasa').KlasaMessage} message
    * @param {import('discord.js').GuildChannel} channel
    */
-  async run(message, remove, channel) {
+  async run(message, [remove, channel]) {
     // If remove param is entered, return remove() function instead
     if (remove) return this.remove(message, channel.id);
     // Update the values in the database

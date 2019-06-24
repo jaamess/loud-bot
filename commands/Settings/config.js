@@ -12,8 +12,7 @@ module.exports = class extends Command {
   }
 
   async run(message, reacoes) {
-    console.log(reacoes);
-    if (reacoes) return this.reactionConfig(message);
+    if (reacoes.length) return this.reactionConfig(message);
 
     const embed = new MessageEmbed()
       .setColor(this.client.settings.colors.LOUD_GREEN)

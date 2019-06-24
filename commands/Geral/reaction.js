@@ -18,7 +18,7 @@ module.exports = class extends Command {
    */
   async run(message, remove, channel) {
     // If remove param is entered, return remove() function instead
-    if (remove) return this.remove(channel);
+    if (remove) return this.remove(message, channel);
     // Update the values in the database
     message.guild.settings.update('whitelistedChannels', channel.id);
     return message.send(`:white_check_mark:  **|  Novo canal "${channel.name}" adicionado com sucesso.**`);

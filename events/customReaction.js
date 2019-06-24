@@ -6,7 +6,7 @@ module.exports = class extends Event {
       name: 'customReaction',
       event: 'customReaction',
       enabled: true,
-      once: true,
+      once: false,
     });
   }
 

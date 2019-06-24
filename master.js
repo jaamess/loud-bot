@@ -2,7 +2,7 @@ const { KlasaClient } = require('klasa');
 const { prefix, token } = require('./ecosystem.config.json');
 
 // Default Schemas
-KlasaClient.defaultGuildSchema.add('whitelistedChannels', 'array');
+KlasaClient.defaultGuildSchema.add('whitelistedChannels', 'channel', { array: true });
 KlasaClient.defaultClientSchema.add('keywords', 'string');
 
 // Permission Levels

@@ -18,7 +18,7 @@ module.exports = class extends Command {
    */
   async run(message, remove, channel) {
     // If remove param is entered, return remove() function instead
-    if (remove) return this.remove(message, channel);
+    if (remove) return this.remove(message, channel.id);
     // Update the values in the database
     message.guild.settings.update('whitelistedChannels', channel.id);
     return message.send(`:white_check_mark:  **|  Novo canal "${channel.name}" adicionado com sucesso.**`);
@@ -29,7 +29,7 @@ module.exports = class extends Command {
    */
   async remove(message, channel) {
     const whitelistedChannels = message.guild.settings.get('whitelistedChannels');
-    if (!whitelistedChannels.has(channel.id))
+    if (!whitelistedChannels.includes(channel))
       return message.send(`<:loudwarning:591525783994892288>  **  |  O canal ${channel.name} não está registrado no banco de dados, logo, não é possível removê-lo.**`);
 
     message.guild.settings.update('whitelistedChannels', channel.id);

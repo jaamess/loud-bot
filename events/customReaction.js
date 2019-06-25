@@ -23,7 +23,6 @@ module.exports = class extends Event {
     if (!response) return null;
     const reactionEmbed = new MessageEmbed()
       .setColor(this.client.settings.colors.LOUD_GREEN)
-      .setThumbnail(this.client.settings.images.LOUD_LOGO)
       .setTitle(`LOUD`)
       .setDescription(response);
     return message.send(reactionEmbed);

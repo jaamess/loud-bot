@@ -11,6 +11,8 @@ module.exports = class extends Monitor {
    * @param {import('klasa').KlasaMessage} message
    */
   async run(message) {
+    // Return if its a command
+    if (message.content.startsWith(message.guild.settings.prefix)) return;
     // Getting whitelisted channels and keywords from the database
     const whiteListedChannels = await message.guild.settings.get('whitelistedChannels');
     const keywords = await message.guild.settings.get('customReactions').keywords;

@@ -33,7 +33,7 @@ module.exports = class extends Command {
 
     // If the indexes match, success, otherwise, tell them something went wrong (very unlikely)
     // TODO: I need to actualy handle this error later when I have more time
-    if (keywordIndex === contentIndex) return message.send(successEmbed);
+    if (keywordIndex !== contentIndex) return message.send(successEmbed);
     return message.send(`<:loudwarning:591525783994892288>  **|  Houve um erro.**`);
   }
 };

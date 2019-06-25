@@ -16,7 +16,7 @@ module.exports = class extends Command {
     const customReactions = await message.guild.settings.get('customReactions');
     if (!customReactions.keywords.includes(keyword))
       return message.send(
-        `<:loudwarning:591525783994892288>  |  A palavra-chave ${keyword} não existe no banco de dados. Diga \`loud config reacoes\` para visualizar as palavras-chave registradas no momento.`
+        `<:loudwarning:591525783994892288>  |  A palavra-chave "${keyword}" não existe no banco de dados. Diga \`loud config reacoes\` para visualizar as palavras-chave registradas no momento.`
       );
 
     const index = await customReactions.keywords.indexOf(keyword);

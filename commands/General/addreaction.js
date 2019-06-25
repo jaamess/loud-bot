@@ -17,7 +17,6 @@ module.exports = class extends Command {
    * @param {String} content
    */
   async run(message, [keyword, content]) {
-		message.guild.settings.reset('customReactions.')
     // Before anything, lets check if the keyword doesnt already exist
     if (message.guild.settings.get('customReactions').keywords.includes(keyword))
       return message.send(`<:loudwarning:591525783994892288>  **|  Esta palavra chave já existe, tente um nome diferente.**`);

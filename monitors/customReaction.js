@@ -19,8 +19,7 @@ module.exports = class extends Monitor {
     if (!whiteListedChannels.includes(message.channel.id)) return;
     if (!keywordInUserMessageContent.some((k) => keywords.includes(k))) return;
 
-    const keyword = keywordInUserMessageContent.filter((key) => keywords.includes(key));
-    return console.log(keyword);
+    const keyword = keywordInUserMessageContent.filter((key) => keywords.includes(key))[0];
 
     // Emit the event that will handle the custom reaction
     return this.client.emit('customReaction', message, keyword);

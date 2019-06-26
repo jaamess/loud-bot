@@ -26,7 +26,8 @@ module.exports = class extends Monitor {
   async run(message) {
     ///////////////////////////
     // Checking if its the right channel and if there's an image attached to it
-    if (message.channel.id !== '591524061859807253') return;
+    const whitelistedChannels = ['591524061859807253', '593496858966360084'];
+    if (!whitelistedChannels.includes(message.channel.id)) return;
     const screenshot = message.attachments.map((m) => m.attachment);
     if (!screenshot.length) {
       if (message.member.roles.highest.position < 28) {
@@ -61,6 +62,7 @@ module.exports = class extends Monitor {
       setTimeout(() => {
         errorMessage.delete();
       }, 6500);
+      console.error(`Erro: Usuario ${message.author.id} (${message.author.username}) - Nao foi possivel obter o score com o print fornecido.`);
       return message.delete();
     }
     // End of optical character recognition
@@ -90,8 +92,13 @@ module.exports = class extends Monitor {
     working.delete();
     // Finished reacting to the image
     // Gives the user their role, after removing their old role.
-    const freeFireRoles = ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136'];
-    freeFireRoles.forEach((i) => {
+    const GUILD_LOUD = {
+      freeFireRoles: ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136'],
+    };
+    const GUILD_FF = {
+      freeFireRoles: [],
+    };
+    GUILD_LOUD.freeFireRoles.forEach((i) => {
       if (message.member.roles.has(i)) message.member.roles.remove(i);
     });
     return this.giveRole(message, rank);
@@ -107,7 +114,8 @@ module.exports = class extends Monitor {
   parseRank(score) {
     let rank = '';
 
-    if (score >= 3200) rank = 'Mestre';
+    if (score >= 4000) rank = 'Desafiante';
+    else if (score >= 3200) rank = 'Mestre';
     else if (score >= 3050) rank = 'Diamante VI';
     else if (score >= 2900) rank = 'Diamante III';
     else if (score >= 2750) rank = 'Diamante II';
@@ -131,12 +139,38 @@ module.exports = class extends Monitor {
   }
 
   giveRole(message, rank) {
-    if (rank.startsWith('Bronze')) return addRole(message, '591514831782412288');
-    if (rank.startsWith('Prata')) return addRole(message, '591514826719625218');
-    if (rank.startsWith('Ouro')) return addRole(message, '591514820734615562');
-    if (rank.startsWith('Platina')) return addRole(message, '591514823733542912');
-    if (rank.startsWith('Diamante')) return addRole(message, '591514817228046406');
-    if (rank.startsWith('Mestre')) return addRole(message, '591514813872603136');
+    let role = '';
+    const roles = {
+      loud: {
+        bronze: '591514831782412288',
+        prata: '591514826719625218',
+        ouro: '591514820734615562',
+        platina: '591514823733542912',
+        diamante: '591514817228046406',
+        mestre: '591514813872603136',
+        desafiante: '',
+      },
+      freeFire: {
+        bronze: '593493955497164803',
+        prata: '593493954192736286',
+        ouro: '593493953303674909',
+        platina: '593493952678592659',
+        diamante: '593493952678592586',
+        mestre: '593493951097602062',
+        desafiante: '593493944411619374',
+      },
+    };
+    // We give the right role depending on what guild this code is being executed
+    if (message.guild.id === '550143369184280607') role = roles.loud;
+    else if (message.guild.id === '593488629993832448') role = roles.freeFire;
+
+    if (rank.startsWith('Bronze')) return addRole(message, role.bronze);
+    if (rank.startsWith('Prata')) return addRole(message, role.prata);
+    if (rank.startsWith('Ouro')) return addRole(message, role.ouro);
+    if (rank.startsWith('Platina')) return addRole(message, role.platina);
+    if (rank.startsWith('Diamante')) return addRole(message, role.diamante);
+    if (rank.startsWith('Mestre')) return addRole(message, role.mestre);
+    if (rank.startsWith('Desafiante')) return addRole(message, role.desafiante);
     /**
      * @param {import('klasa').KlasaMessage} message
      */

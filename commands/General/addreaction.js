@@ -17,7 +17,7 @@ module.exports = class extends Command {
    * @param {String} content
    */
   async run(message, [keyword, content]) {
-    if (keyword === 'loud') return message.send(`<:loudwarning:591525783994892288>  **|  Esta palavra chave não pode ser utilizada, tente novamente com um nome diferente.**`);
+    if (keyword === 'loud') return message.send(`<:loudwarning:591525783994892288>  **|  Esta palavra-chave não pode ser utilizada, tente novamente com um nome diferente.**`);
     // Before anything, lets check if the keyword doesnt already exist
     if (message.guild.settings.get('customReactions').keywords.includes(keyword))
       return message.send(`<:loudwarning:591525783994892288>  **|  Esta palavra chave já existe, tente um nome diferente.**`);

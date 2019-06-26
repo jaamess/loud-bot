@@ -11,14 +11,11 @@ module.exports = class extends Event {
   }
 
   run(reaction, user) {
-    /*
-     * Deactivating this event until further notice as per the server's current needs..
-     */
-    return;
     if (reaction.message.channel.parent.id !== '589243529075752970') return;
     if (reaction.emoji.name === '❌') {
       for (const users of reaction.users) {
-        // if (users.roles.position >= 23) return;
+        // Uncomment this to allow moderators to react with "x"
+        // if (users.roles.position >= 27) return;
         reaction.users.remove(user.id);
       }
     }

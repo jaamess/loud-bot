@@ -25,6 +25,6 @@ module.exports = class extends Event {
       .setColor(this.client.settings.colors.LOUD_GREEN)
       .setTitle(`LOUD`)
       .setDescription(response);
-    return message.send(reactionEmbed);
+    return message.channel.send(`<@${message.author.id}>`, reactionEmbed);
   }
 };

@@ -14,7 +14,7 @@ module.exports = class extends Event {
    * @param {import('discord.js').MessageReaction} reaction
    * @param {import('klasa').KlasaUser} user
    */
-  run(reaction, user) {
+  async run(reaction, user) {
     if (reaction.message.channel.parent.id === '589243529075752970') {
       if (reaction.emoji.name === '❌') {
         for (const users of reaction.users) {

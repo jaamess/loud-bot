@@ -52,6 +52,7 @@ module.exports = class extends Monitor {
     const working = await message.send('Verificando patente...');
     const result = await this.parseImage(screenshot);
     const split = result.split(' ');
+    console.log(split);
     const index = split.indexOf('top');
     const score = split[index - 1];
     if (!score) {

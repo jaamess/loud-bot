@@ -1,6 +1,6 @@
 const { Monitor } = require('klasa');
-const { TesseractWorker } = require('tesseract.js');
-const worker = new TesseractWorker();
+const { TesseractExtendWorker } = require('../src/lib/structures/TesseractExtendedWorker');
+const worker = new TesseractExtendWorker();
 
 module.exports = class extends Monitor {
 

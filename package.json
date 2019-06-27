@@ -8,6 +8,8 @@
   "license": "GPL-2.0-only",
   "private": true,
   "dependencies": {
+    "chainfetch": "^1.2.2",
+    "check-types": "^8.0.3",
     "chokidar": "^3.0.1",
     "discord.js": "discordjs/discord.js",
     "duration-parser": "^1.0.2",

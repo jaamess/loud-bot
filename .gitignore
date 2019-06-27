@@ -1,7 +1,6 @@
 # Black hole
 node_modules
 ecosystem.config.json
-yarn.lock
 yarn-error.log
 
 # Database

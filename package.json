@@ -12,9 +12,12 @@
     "discord.js": "discordjs/discord.js",
     "duration-parser": "^1.0.2",
     "klasa": "dirigeants/klasa",
-    "tesseract.js": "^1.0.19"
+    "tesseract.js": "github:naptha/tesseract.js#master"
   },
   "engines": {
     "node": ">=10.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^6.0.1"
   }
 }

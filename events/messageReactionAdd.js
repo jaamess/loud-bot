@@ -27,10 +27,8 @@ module.exports = class extends Event {
 
     if (reaction.message.channel.id === '593493916293136424') {
       console.log('reacted');
-      for (const user of reaction.users) {
-        console.log(user);
-        reaction.message.guild.members.get(user.id).roles.add('593494969478676483');
-      }
+      let member = await reaction.message.guild.fetchMember(user).catch(() => console.error);
+      member.addRole('593494969478676483');
     }
   }
 };

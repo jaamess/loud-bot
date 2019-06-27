@@ -30,11 +30,13 @@ module.exports = class extends Monitor {
     if (!whitelistedChannels.includes(message.channel.id)) return;
     const screenshot = message.attachments.map((m) => m.attachment);
     if (!screenshot.length) {
-      if (message.author.id !== '254808241643585547') message.delete();
-      const response = await message.send('<:loudwarning:591525783994892288>  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
-      setTimeout(() => {
-        response.delete();
-      }, 5000);
+      if (message.author.id !== '254808241643585547') {
+        message.delete();
+        const response = await message.send('<:loudwarning:591525783994892288>  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
+        setTimeout(() => {
+          response.delete();
+        }, 5000);
+      }
       return;
     }
     ///////////////////////////

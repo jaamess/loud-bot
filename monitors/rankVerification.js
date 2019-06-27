@@ -30,21 +30,11 @@ module.exports = class extends Monitor {
     if (!whitelistedChannels.includes(message.channel.id)) return;
     const screenshot = message.attachments.map((m) => m.attachment);
     if (!screenshot.length) {
-      if (message.guild.id === '593488629993832448') {
-        if (message.member.role.highest.position < 10)
-        const response = await message.send('<:loudwarning:591525783994892288>  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
-        setTimeout(() => {
-          response.delete();
-        }, 5000);
-        return
-      }
-      if (message.member.roles.highest.position < 28) {
-        message.delete();
-        const response = await message.send('<:loudwarning:591525783994892288>  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
-        setTimeout(() => {
-          response.delete();
-        }, 5000);
-      }
+      message.delete();
+      const response = await message.send('<:loudwarning:591525783994892288>  |  **Você não enviou uma captura de tela válida para verificar sua patente. Tente novamente.**');
+      setTimeout(() => {
+        response.delete();
+      }, 5000);
       return;
     }
     ///////////////////////////

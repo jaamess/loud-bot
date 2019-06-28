@@ -51,10 +51,7 @@ module.exports = class extends Monitor {
 		const working = await message.send('Verificando patente...');
 		const result = await this.parseImage(screenshot);
 		const split = result.split(' ').map((txt) => txt.replace(this.NUMBER_REGEX, ''));
-		console.log('Split-Original', result.split(' '), { maxArrayLength: null });
-		console.log('Split-Filter', split, { maxArrayLength: null });
 		const score = Number(split.find((str) => str.length === 4));
-		console.log('Score', score);
 		if (!score) {
 			working.delete();
 			const errorMessage = await message.channel.send(

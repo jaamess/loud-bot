@@ -14,6 +14,10 @@ class CanvasCropper {
 		return result.toBuffer();
 	}
 
+	static isURL(str) {
+		return CanvasCropper.URL_REGEX.test(str);
+	}
+
 	static async _parseImage(image) {
 		if (CanvasCropper.isURL(image)) return fetch.get(image).toBuffer().onlyBody();
 		if (Buffer.isBuffer(image)) return image;

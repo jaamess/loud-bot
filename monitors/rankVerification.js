@@ -53,8 +53,7 @@ module.exports = class extends Monitor {
 		const split = result.split(' ').map((txt) => txt.replace(this.NUMBER_REGEX, ''));
 		console.log('Split-Original', result.split(' '), { maxArrayLength: null });
 		console.log('Split-Filter', split, { maxArrayLength: null });
-		const index = split.indexOf('top');
-		const score = split[index - 1];
+		const score = Number(split.find((str) => str.length === 4));
 		if (!score) {
 			working.delete();
 			const errorMessage = await message.channel.send(

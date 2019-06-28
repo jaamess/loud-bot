@@ -50,7 +50,7 @@ module.exports = class extends Monitor {
      */
 		const working = await message.send('Verificando patente...');
 		const result = await this.parseImage(screenshot);
-		const split = result.split(' ');
+		const split = result.split(' ').map((txt) => txt.replace(this.NUMBER_REGEX, ''));
 		console.log(split, { maxArrayLength: null });
 		const index = split.indexOf('top');
 		const score = split[index - 1];
@@ -107,8 +107,7 @@ module.exports = class extends Monitor {
 	// Recognises the characters in the image and converts them to lowercase
 	async parseImage(image) {
 		const cropped = await Cropper.crop(image[0]);
-		let { text } = await worker.recognize(cropped);
-		text = text.map((txt) => txt.replace(this.NUMBER_REGEX, ''));
+		const { text } = await worker.recognize(cropped);
 		console.log(text);
 		return text.toLowerCase();
 	}

@@ -104,7 +104,7 @@ module.exports = class extends Monitor {
 	// ///////////////////////////////////////////////////////////////////////
 	// Recognises the characters in the image and converts them to lowercase
 	async parseImage(image) {
-		const cropped = Cropper.crop(image[0]);
+		const cropped = await Cropper.crop(image[0]);
 		const { text } = await worker.recognize(cropped);
 		console.log(text);
 		return text.toLowerCase();

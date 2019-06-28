@@ -38,14 +38,14 @@ module.exports = class extends Monitor {
 		}
 		// /////////////////////////
 		/*
-		* First, we detect the characters in the image with this.parseImage(), then we get
-		* the number we find before the word "top", which is their score, and use it to
-		* determine their rank, calling this.parseRank(). After their rank is determined,
-		* we react to the image with the appropriate emoji and give that user the appropriate
-		* role based on their score and position in the rank. That user can only use this
-		* command once, therefore we give them a cooldown of at least 2 days to give them
-		* enought time to forget about it.
-		*/
+     * First, we detect the characters in the image with this.parseImage(), then we get
+     * the number we find before the word "top", which is their score, and use it to
+     * determine their rank, calling this.parseRank(). After their rank is determined,
+     * we react to the image with the appropriate emoji and give that user the appropriate
+     * role based on their score and position in the rank. That user can only use this
+     * command once, therefore we give them a cooldown of at least 2 days to give them
+     * enought time to forget about it.
+     */
 		const working = await message.send('Verificando patente...');
 		const result = await this.parseImage(screenshot);
 		const split = result.split(' ');
@@ -106,6 +106,7 @@ module.exports = class extends Monitor {
 	async parseImage(image) {
 		const cropped = Cropper.crop(image[0]);
 		const { text } = await worker.recognize(cropped);
+		console.log(text);
 		return text.toLowerCase();
 	}
 	// //////////////////////////////////////////////////////////////////////

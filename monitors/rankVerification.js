@@ -17,6 +17,8 @@ module.exports = class extends Monitor {
 			ignoreBlacklistedUsers: true,
 			ignoreBlacklistedGuilds: true
 		});
+
+		this.NUMBER_REGEX = /[^0-9\s]/gi;
 	}
 	// //////////////////////////////////////////////////////////////////////
 	// Main function
@@ -105,7 +107,8 @@ module.exports = class extends Monitor {
 	// Recognises the characters in the image and converts them to lowercase
 	async parseImage(image) {
 		const cropped = await Cropper.crop(image[0]);
-		const { text } = await worker.recognize(cropped);
+		let { text } = await worker.recognize(cropped);
+		text = text.map((txt) => txt.replace(this.NUMBER_REGEX, ''));
 		console.log(text);
 		return text.toLowerCase();
 	}

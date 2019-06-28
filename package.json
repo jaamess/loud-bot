@@ -12,7 +12,6 @@
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "chainfetch": "^1.2.2",
     "check-types": "^8.0.3",
-    "chokidar": "^3.0.1",
     "discord.js": "discordjs/discord.js",
     "duration-parser": "^1.0.2",
     "fs-nextra": "^0.4.5",

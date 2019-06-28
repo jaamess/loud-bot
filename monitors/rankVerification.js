@@ -18,7 +18,7 @@ module.exports = class extends Monitor {
 			ignoreBlacklistedGuilds: true
 		});
 
-		this.NUMBER_REGEX = /[^0-9\s]/gi;
+		this.NUMBER_REGEX = /(?:[^0-9]+)+/gi;
 	}
 	// //////////////////////////////////////////////////////////////////////
 	// Main function

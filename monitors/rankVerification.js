@@ -1,5 +1,6 @@
 const { Monitor } = require('klasa');
 const { TesseractExtendWorker } = require('../src/lib/structures/TesseractExtendedWorker');
+const Cropper = require('../src/lib/util/CanvasCropper');
 const worker = new TesseractExtendWorker();
 
 module.exports = class extends Monitor {
@@ -103,7 +104,8 @@ module.exports = class extends Monitor {
 	// ///////////////////////////////////////////////////////////////////////
 	// Recognises the characters in the image and converts them to lowercase
 	async parseImage(image) {
-		const { text } = await worker.recognize(image[0]);
+		const cropped = Cropper.crop(image[0]);
+		const { text } = await worker.recognize(cropped);
 		return text.toLowerCase();
 	}
 	// //////////////////////////////////////////////////////////////////////

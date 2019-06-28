@@ -25,7 +25,7 @@ module.exports = class extends Monitor {
 	async run(message) {
 		// /////////////////////////
 		// Checking if its the right channel and if there's an image attached to it
-		const whitelistedChannels = ['591524061859807253', '593496858966360084'];
+		const whitelistedChannels = ['591524061859807253', '593496858966360084', '591340583159595028'];
 		if (!whitelistedChannels.includes(message.channel.id)) return;
 		const screenshot = message.attachments.map((msg) => msg.attachment);
 		if (!screenshot.length) {
@@ -63,11 +63,9 @@ module.exports = class extends Monitor {
 			console.error(`Erro: Usuario ${message.author.id} (${message.author.username}) - Nao foi possivel obter o score com o print fornecido.`);
 			await message.delete();
 		}
-		// End of optical character recognition
 		// Start of rank determination
 		const rank = await this.parseRank(parseInt(score));
 		console.log(`Detected score: ${score}, and rank: ${rank}`);
-		// End of rank determination
 		// Now we react to the image with the appropriate emoji
 		// Note that these emojis only exist in the server this bot was made for,
 		// you should change the IDs in case you use this in a different server.
@@ -88,7 +86,6 @@ module.exports = class extends Monitor {
 		else if (rank.startsWith('Bronze')) message.react(emoji.guild.emojis.get(emoji.bronze));
 		// Delete the message that says we're processing the image
 		working.delete();
-		// Finished reacting to the image
 		// Gives the user their role, after removing their old role.
 		const GUILD_LOUD = {
 			freeFireRoles: ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136']
@@ -109,7 +106,7 @@ module.exports = class extends Monitor {
 		this.giveRole(message, rank);
 	}
 	// ///////////////////////////////////////////////////////////////////////
-	// Recognises the characters in the image and converts them to lowercase
+	// Crops the image and recognises the characters in the image
 	async parseImage(image) {
 		const cropped = await Cropper.crop(image[0]);
 		const { text } = await worker.recognize(cropped);

@@ -1,8 +1,4 @@
-const fetch = require('chainfetch');
-const util = require('util');
-const fs = require('fs');
-
-const readFile = util.promisify(fs.readFile);
+const Util = require('../util/Util');
 
 let jobCounter = 0;
 
@@ -92,7 +88,7 @@ class TesseractExtendedJob {
 
 	_sendPacket(instance, iPacket) {
 		const packet = { ...iPacket };
-		this._parseImage(packet.payload.image)
+		Util.parseImage(packet.payload.image)
 			.then((buf) => new Uint8Array(buf))
 			.then((img) => {
 				packet.payload.image = Array.from(img);
@@ -100,19 +96,6 @@ class TesseractExtendedJob {
 			});
 	}
 
-	async _parseImage(image) {
-		if (TesseractExtendedJob.isURL(image)) return fetch.get(image).toBuffer().onlyBody();
-		if (Buffer.isBuffer(image)) return image;
-		return readFile(image);
-	}
-
-	static isURL(str) {
-		return TesseractExtendedJob.URL_REGEX.test(str);
-	}
-
 }
-
-// eslint-disable-next-line
-TesseractExtendedJob.URL_REGEX = /^(?:\w+:)?\/\/([^\s\.]+\.\S{2}|localhost[\:?\d]*)\S*$/;
 
 module.exports = TesseractExtendedJob;

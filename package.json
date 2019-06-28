@@ -15,6 +15,7 @@
     "chokidar": "^3.0.1",
     "discord.js": "discordjs/discord.js",
     "duration-parser": "^1.0.2",
+    "fs-nextra": "^0.4.5",
     "image-size": "github:image-size/image-size",
     "klasa": "dirigeants/klasa",
     "tesseract.js": "github:naptha/tesseract.js#master"

@@ -95,12 +95,19 @@ module.exports = class extends Monitor {
 		const GUILD_LOUD = {
 			freeFireRoles: ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136']
 		};
-		/* const GUILD_FF = {
-			freeFireRoles: []
-		}; */
-		GUILD_LOUD.freeFireRoles.forEach((i) => {
-			if (message.member.roles.has(i)) message.member.roles.remove(i);
-		});
+		const GUILD_FF = {
+			freeFireRoles: ['593493955497164803', '593493954192736286', '593493953303674909', '593493952678592659', '593493952678592586', '593493951097602062', '593493944411619374']
+		};
+		if (message.guild.id === '550143369184280607') {
+			GUILD_LOUD.freeFireRoles.forEach((i) => {
+				if (message.member.roles.has(i)) message.member.roles.remove(i);
+			});
+		} else if (message.guild.id === '593488629993832448') {
+			GUILD_FF.freeFireRoles.forEach((i) => {
+				if (message.member.roles.has(i)) message.member.roles.remove(i);
+			});
+		}
+
 		this.giveRole(message, rank);
 	}
 	// ///////////////////////////////////////////////////////////////////////

@@ -11,7 +11,7 @@ class CanvasCropper {
 		const dimensions = sizeOf(image);
 
 		const cWidth = dimensions.width / 4;
-		const cHeight = dimensions.height / 4;
+		const cHeight = (dimensions.height > dimensions.width) ? dimensions.height / 8 : dimensions.height / 4;
 		const iWidthOffset = -((dimensions.width / 8) * 5);
 		const iHeightOffset = -((dimensions.height / 16) * 7);
 

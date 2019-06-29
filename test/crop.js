@@ -2,7 +2,7 @@ const sizeOf = require('image-size');
 const fsn = require('fs-nextra');
 const { Canvas } = require('canvas-constructor');
 
-fsn.readFile('./unknown4.png').then(async (buff) => {
+fsn.readFile('./unknown2.png').then(async (buff) => {
 	const dimensions = sizeOf(buff);
 
 	console.log(dimensions.width, dimensions.height);

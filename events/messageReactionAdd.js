@@ -10,7 +10,8 @@ module.exports = class extends Event {
     });
   }
   async run(reaction, user) {
-    console.log('Reaction event fired');
+    const whitelistedChannels = ['589243529075752970', '593493916293136424'];
+    if (!whitelistedChannels.includes(reaction.message.channel.id)) return;
     if (reaction.message.channel.parent.id === '589243529075752970') {
       if (reaction.emoji.name === '❌') {
         for (const users of reaction.users) {

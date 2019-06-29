@@ -9,9 +9,12 @@ module.exports = class extends Event {
       once: false,
     });
   }
+  /**
+   *
+   * @param {import('discord.js').MessageReaction} reaction
+   */
   async run(reaction, user) {
-    const whitelistedChannels = ['589243529075752970', '593493916293136424'];
-    if (!whitelistedChannels.includes(reaction.message.channel.id)) return;
+    console.log(reaction.message.channel.id, ' --> ', reaction.message.channel.name);
     if (reaction.message.channel.parent.id === '589243529075752970') {
       if (reaction.emoji.name === '❌') {
         for (const users of reaction.users) {

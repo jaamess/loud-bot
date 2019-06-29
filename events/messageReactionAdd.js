@@ -10,6 +10,7 @@ module.exports = class extends Event {
     });
   }
   async run(reaction, user) {
+    console.log('Reaction event fired');
     if (reaction.message.channel.parent.id === '589243529075752970') {
       if (reaction.emoji.name === '❌') {
         for (const users of reaction.users) {

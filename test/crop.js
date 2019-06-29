@@ -7,8 +7,8 @@ fsn.readFile('./unknown2.png').then(async (buff) => {
 
 	console.log(dimensions.width, dimensions.height);
 
-	const result = new Canvas(dimensions.width / 4, dimensions.height / 4)
-		.addImage(buff, -((dimensions.width / 8) * 5), -((dimensions.height / 16) * 7), dimensions.width, dimensions.height);
+	const result = new Canvas(dimensions.width / 8, dimensions.height / 8)
+		.addImage(buff, -((dimensions.width / 16) * 10), -((dimensions.height / 32) * 17), dimensions.width, dimensions.height);
 
 	fsn.writeFile('result.png', result.toBuffer());
 });

@@ -2,10 +2,6 @@ const { Task } = require('klasa');
 
 module.exports = class extends Task {
 
-	constructor(...args) {
-		super(...args, { enabled: true });
-	}
-
 	async init() {
 		if (this.client.guilds.get('593488629993832448').available) {
 			this.client.guilds

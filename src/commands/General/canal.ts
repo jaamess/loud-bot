@@ -1,8 +1,9 @@
-const { Command } = require('klasa');
+import { Command, CommandStore, KlasaMessage } from 'klasa';
+import { GuildChannel } from 'discord.js';
 
-module.exports = class extends Command {
-  constructor(...args) {
-    super(...args, {
+export default class extends Command {
+  constructor(store: CommandStore, file: string[], directory: string) {
+    super(store, file, directory, {
       enabled: true,
       runIn: ['text'],
       permissionLevel: 6,
@@ -11,23 +12,18 @@ module.exports = class extends Command {
       usageDelim: ' ',
     });
   }
-  /**
-   * @param {import('klasa').KlasaMessage} message
-   * @param {import('discord.js').GuildChannel} channel
-   */
-  async run(message, [remove, channel]) {
+
+  async run(message: KlasaMessage, [remove, channel]: [string, GuildChannel]) {
     // If remove param is entered, return remove() function instead
     if (remove) return this.remove(message, channel);
     // Update the values in the database
     message.guild.settings.update('whitelistedChannels', channel.id);
     return message.send(`:white_check_mark:  **|  Novo canal com nome "${channel.name}" adicionado com sucesso.**`);
   }
-  /**
-   * @param {import('klasa').KlasaMessage} message
-   * @param {import('discord.js').GuildChannel} channel
-   */
-  async remove(message, channel) {
+
+  async remove(message: KlasaMessage, channel: GuildChannel) {
     const whitelistedChannels = message.guild.settings.get('whitelistedChannels');
+    //@ts-ignore
     if (!whitelistedChannels.includes(channel.id))
       return message.send(`<:loudwarning:591525783994892288>  **  |  O canal de nome ${channel.name} não está registrado no banco de dados, logo, não é possível removê-lo.**`);
 

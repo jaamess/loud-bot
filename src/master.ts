@@ -1,5 +1,5 @@
-const { KlasaClient } = require('klasa');
-const { prefix, token } = require('../ecosystem.config.json');
+import { KlasaClient } from 'klasa';
+import { prefix, token } from '../ecosystem.config.json';
 
 // Default Schemas
 KlasaClient.defaultGuildSchema
@@ -20,7 +20,6 @@ KlasaClient.defaultPermissionLevels
 	.add(6, (message) => message.member.permissions.has('ADMINISTRATOR'));
 
 new KlasaClient({
-	clientBaseDir: './src',
 	fetchAllMembers: true,
 	prefix: prefix,
 	commandEditing: true,

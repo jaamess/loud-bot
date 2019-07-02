@@ -1,20 +1,19 @@
-const { Command } = require('klasa');
-const { MessageEmbed } = require('discord.js');
+import { Command, CommandStore, KlasaMessage } from 'klasa';
+import { MessageEmbed } from 'discord.js';
 
-module.exports = class extends Command {
-  constructor(...args) {
-    super(...args, {
+export default class extends Command {
+  constructor(store: CommandStore, file: string[], directory: string) {
+    super(store, file, directory, {
       name: 'language',
       aliases: ['idioma'],
       enabled: true,
-      cooldown: 0,
       permissionLevel: 6,
       usage: '<idioma:string>',
       description: 'Muda o idioma do bot no servidor. Pode ser portugues ou ingles.',
     });
   }
 
-  async run(message, language) {
+  async run(message: KlasaMessage, language: string[]) {
     const newLanguage = await this.parseLanguage(message, language[0]);
     const responseString = await message.language.get('COMMAND_LANGUAGE_SUCCESS', newLanguage);
 
@@ -24,10 +23,10 @@ module.exports = class extends Command {
       .setThumbnail(message.guild.iconURL())
       .setDescription(responseString);
 
-    message.send(embed);
+    return message.send(embed);
   }
 
-  async parseLanguage(message, rawLanguage) {
+  async parseLanguage(message: KlasaMessage, rawLanguage: string) {
     switch (rawLanguage) {
       case 'portugues':
       case 'português':
@@ -42,7 +41,7 @@ module.exports = class extends Command {
       default:
         break;
     }
-
+    //@ts-ignore
     return message.guild.settings.language;
   }
 };

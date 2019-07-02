@@ -24,5 +24,5 @@ new KlasaClient({
 	prefix: prefix,
 	commandEditing: true,
 	typing: false,
-	readyMessage: (client) => `Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
+	readyMessage: (client) => `[READY] Successfully initialized. Ready to serve ${client.guilds.size} guilds.`
 }).login(token);

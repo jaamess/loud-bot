@@ -1,5 +1,5 @@
 const { KlasaClient } = require('klasa');
-const { prefix, token } = require('./ecosystem.config.json');
+const { prefix, token } = require('../ecosystem.config.json');
 
 // Default Schemas
 KlasaClient.defaultGuildSchema
@@ -8,7 +8,7 @@ KlasaClient.defaultGuildSchema
 KlasaClient.defaultClientSchema
 	.add('colors', (folder) => folder.add('LOUD_GREEN', 'string').add('LOUD_BLACK', 'string'))
 	.add('images', (folder) => folder.add('LOUD_LOGO', 'url'))
-	.add('reactionRoleMessages', 'message', { array: true });
+	.add('reactionRoleMessages', 'string', { array: true });
 
 // Permission Levels
 KlasaClient.defaultPermissionLevels

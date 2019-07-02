@@ -17,7 +17,8 @@
     "fs-nextra": "^0.4.5",
     "image-size": "github:image-size/image-size",
     "klasa": "dirigeants/klasa",
-    "tesseract.js": "github:naptha/tesseract.js#master"
+    "tesseract.js": "github:naptha/tesseract.js#master",
+    "typescript": "^3.5.2"
   },
   "engines": {
     "node": ">=10.0.0"

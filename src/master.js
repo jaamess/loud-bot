@@ -20,6 +20,7 @@ KlasaClient.defaultPermissionLevels
 	.add(6, (message) => message.member.permissions.has('ADMINISTRATOR'));
 
 new KlasaClient({
+	clientBaseDir: './src',
 	fetchAllMembers: true,
 	prefix: prefix,
 	commandEditing: true,

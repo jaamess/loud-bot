@@ -1,9 +1,9 @@
-const { Command } = require('klasa');
-const { MessageEmbed } = require('discord.js');
+import { Command, CommandStore, KlasaMessage } from 'klasa';
+import { MessageEmbed } from 'discord.js';
 
-module.exports = class extends Command {
-  constructor(...args) {
-    super(...args, {
+export default class extends Command {
+  constructor(store: CommandStore, file: string[], directory: string) {
+    super(store, file, directory, {
       name: 'membros',
       enabled: true,
       runIn: ['text'],
@@ -15,13 +15,12 @@ module.exports = class extends Command {
     });
   }
 
-  async run(message) {
+  async run(message: KlasaMessage) {
     const embed = new MessageEmbed()
       .setColor('#39d52d')
       .setTitle(`LOUD`)
-      .setThumbnail(message.guild.iconURL)
       .setDescription(`Este servidor tem ${message.guild.members.size} membros.`);
 
-    message.send(embed);
+    return message.send(embed);
   }
 };

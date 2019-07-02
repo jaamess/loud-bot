@@ -1,9 +1,9 @@
-const { Language, util } = require('klasa');
+import { LanguageStore, Language, util, KlasaMessage } from 'klasa';
 
-module.exports = class extends Language {
+export default class extends Language {
 
-	constructor(...args) {
-		super(...args);
+	constructor(store: LanguageStore, file: string[], directory: string) {
+		super(store, file, directory);
 		this.language = {
 			// Start of custom language strings
 
@@ -14,16 +14,16 @@ module.exports = class extends Language {
 			// Config Command
 			COMMAND_CONFIG_GENERAL_DESCRIPTION: 'These are the general settings of the bot in this server.',
 			COMMAND_CONFIG_REACTION_DESCRIPTION: "These are the bot's settings in this server related to the custom reactions feature.",
-			COMMAND_CONFIG_REACTION_RESPONSES: (amount) => amount ? `There are ${amount} registered responses.` : `No registered responses.`,
+			COMMAND_CONFIG_REACTION_RESPONSES: (amount: Number) => amount ? `There are ${amount} registered responses.` : `No registered responses.`,
 			// Language Command
-			COMMAND_LANGUAGE_SUCCESS: (language) => `This server's language has been set to ${language}.`,
+			COMMAND_LANGUAGE_SUCCESS: (language: Language) => `This server's language has been set to ${language}.`,
 
 			// Prefix Command
 			COMMAND_PREFIX_RESET: "The bot's prefix has been reset successfully. The prefix is: `loud `.",
-			COMMAND_PREFIX_SUCCESS: (prefix) => `The bot's prefix in this server has been set to: ${prefix}`,
+			COMMAND_PREFIX_SUCCESS: (prefix: string) => `The bot's prefix in this server has been set to: ${prefix}`,
 
 			// Slow Command
-			COMMAND_SLOW_SUCCESS: (duration) =>
+			COMMAND_SLOW_SUCCESS: (duration: Number) =>
 				duration !== 0 ? `Slow mode has been activated in this channel, with a cooldown of ${duration} seconds per message.` : `Slow mode has been turned off in this channel!`,
 
 			DEFAULT: (key) => `${key} has not been localized for en-US yet.`,
@@ -169,7 +169,7 @@ module.exports = class extends Language {
 			COMMAND_HELP_NO_EXTENDED: 'No extended help available.',
 			COMMAND_HELP_DM: '📥 | The list of commands you have access to has been sent to your DMs.',
 			COMMAND_HELP_NODM: "❌ | You have DMs disabled, I couldn't send you the commands in DMs.",
-			COMMAND_HELP_USAGE: (usage) => `Usage :: ${usage}`,
+			COMMAND_HELP_USAGE: (usage: string) => `Usage :: ${usage}`,
 			COMMAND_HELP_EXTENDED: 'Extended Help ::',
 			COMMAND_ENABLE: (type, name) => `+ Successfully enabled ${type}: ${name}`,
 			COMMAND_ENABLE_DESCRIPTION: 'Re-enables or temporarily enables a command/inhibitor/monitor/finalizer. Default state restored on reboot.',
@@ -189,7 +189,7 @@ module.exports = class extends Language {
 			COMMAND_CONF_SERVER: (key, list) => `**Guild Settings${key}**\n${list}`,
 			COMMAND_CONF_USER_DESCRIPTION: 'Define per-user settings.',
 			COMMAND_CONF_USER: (key, list) => `**User Settings${key}**\n${list}`,
-			COMMAND_STATS: (memUsage, uptime, users, guilds, channels, klasaVersion, discordVersion, processVersion, message) => [
+			COMMAND_STATS: (memUsage: string, uptime: string, users: string, guilds: string, channels: string, klasaVersion: string, discordVersion: string, processVersion: string, message: KlasaMessage) => [
 				'= STATISTICS =',
 				'',
 				`• Mem Usage  :: ${memUsage} MB`,

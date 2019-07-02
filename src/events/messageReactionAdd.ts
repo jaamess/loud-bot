@@ -17,6 +17,7 @@ export default class extends Event {
     //@ts-ignore
     if (reaction.message.channel.parent.id === '589243529075752970') {
       if (reaction.emoji.name === '❌') {
+        //@ts-ignore
         for (const users of reaction.users) {
           // Uncomment this to allow moderators to react with "x"
           // if (users.roles.position >= 27) return;

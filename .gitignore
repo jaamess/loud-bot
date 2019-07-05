@@ -9,3 +9,6 @@ eng.traineddata
 
 # Typescript output directory
 production
+
+# Testing stuff
+test

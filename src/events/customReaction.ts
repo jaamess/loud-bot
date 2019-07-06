@@ -1,5 +1,6 @@
 import { Event, EventStore, KlasaMessage } from 'klasa';
 import { MessageEmbed } from 'discord.js';
+import { GuildSettings, ClientSettings } from '../lib/types/settings';
 
 export default class extends Event {
 
@@ -17,19 +18,17 @@ export default class extends Event {
 		// Since the keywords and responses are only added together,
 		// their indexes will always match, so we will be using that
 		// to match the keywords to their responses
-		//@ts-ignore
-		const keywords = await message.guild.settings.get('customReactions').keywords;
+		const keywords = await (message.guild.settings as GuildSettings).get('customReactions').get('keywords');
 		const index = keywords.indexOf(keyword);
-		//@ts-ignore
-		const response = await message.guild.settings.get('customReactions').response[index];
+		const responses = await (message.guild.settings as GuildSettings).get('customReactions').get('response');
+		const response = await (message.guild.settings as GuildSettings).get('customReactions').get(responses[index]);
 		// If, by any means, we can't get the response, we will just do nothing
 		if (!response) return null;
 		const reactionEmbed = new MessageEmbed()
-			//@ts-ignore
-			.setColor(this.client.settings.colors.LOUD_GREEN)
+			.setColor((this.client.settings as ClientSettings).get('colors').get('LOUD_GREEN'))
 			.setTitle(`LOUD`)
 			.setDescription(response);
-		return message.channel.send(`<@${message.author.id}>`, reactionEmbed);
+		return message.send(`<@${message.author.id}>`, reactionEmbed);
 	}
 
 };

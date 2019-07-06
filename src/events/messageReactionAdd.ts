@@ -1,5 +1,5 @@
 import { Event, EventStore, KlasaUser } from 'klasa';
-import { MessageReaction, GuildMember } from 'discord.js';
+import { MessageReaction, GuildMember, TextChannel } from 'discord.js';
 
 export default class extends Event {
   constructor(store: EventStore, file: string[], directory: string) {
@@ -14,8 +14,8 @@ export default class extends Event {
   async run(reaction: MessageReaction, user: KlasaUser) {
     const whitelistedChannels = ['589243529075752970', '593493916293136424'];
     if (!whitelistedChannels.includes(reaction.message.channel.id)) return;
-    //@ts-ignore
-    if (reaction.message.channel.parent.id === '589243529075752970') {
+
+    if ((reaction.message.channel as TextChannel).parent.id === '589243529075752970') {
       if (reaction.emoji.name === '❌') {
         //@ts-ignore
         for (const users of reaction.users) {

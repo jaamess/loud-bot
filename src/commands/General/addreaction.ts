@@ -1,5 +1,6 @@
 import { Command, CommandStore, KlasaMessage } from 'klasa';
 import { MessageEmbed } from 'discord.js';
+import { GuildSettings, CustomReactions, ClientSettings } from '../../lib/types/settings';
 
 export default class extends Command {
     public constructor(store: CommandStore, file: string[], directory: string) {
@@ -16,24 +17,21 @@ export default class extends Command {
     public async run(message: KlasaMessage, [keyword, content]): Promise<KlasaMessage | KlasaMessage[]> {
         if (keyword === 'loud') return message.send(`<:loudwarning:591525783994892288>  **|  Esta palavra-chave não pode ser utilizada, tente novamente com um nome diferente.**`);
         // Before anything, lets check if the keyword doesnt already exist
-        // @ts-ignore
-        if (message.guild.settings.get('customReactions').keywords.includes(keyword)) {
+        const gSettings: GuildSettings = message.guild.settings as GuildSettings;
+        const cReactions: CustomReactions = gSettings.get('customReactions');
+        if (cReactions.get('keywords').includes(keyword)) {
             return message.send(`<:loudwarning:591525783994892288>  **|  Esta palavra chave já existe, tente um nome diferente.**`);
         }
         // First we update the database, adding the keyword and the new reaction
         await message.guild.settings.update({ customReactions: { keywords: keyword, response: content } });
-        const updatedSettings = await message.guild.settings.get('customReactions');
-        // @ts-ignore
-        const keywordIndex = updatedSettings.keywords.indexOf(keyword);
-        // @ts-ignore
-        const contentIndex = updatedSettings.keywords.indexOf(content);
+        const updatedSettings = await gSettings.get('customReactions');
+        const keywordIndex = updatedSettings.get('keywords').indexOf(keyword);
+        const contentIndex = updatedSettings.get('keywords').indexOf(content);
 
         // Creating the message that will tell the user the database was successfully updated
         const successEmbed = new MessageEmbed()
-            // @ts-ignore
-            .setColor(this.client.settings.colors.LOUD_GREEN)
-            // @ts-ignore
-            .setThumbnail(this.client.settings.images.LOUD_LOGO)
+            .setColor((this.client.settings as ClientSettings).get('colors').get('LOUD_GREEN'))
+            .setThumbnail((this.client.settings as ClientSettings).get('images').get('LOUD_LOGO'))
             .setDescription(`O seguinte conteúdo foi atualizado no banco de dados:`)
             .addField('Palavra-Chave', `**${keyword}**`)
             .addField('Reação', `\`\`\`${content}\`\`\``);

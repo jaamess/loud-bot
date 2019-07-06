@@ -26,6 +26,7 @@
       "@types/node",
       "@types/ws",
       "@types/image-size",
+      "@types/check-types",
       "klasa",
       "discord.js",
       "chainfetch"

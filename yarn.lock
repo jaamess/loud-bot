@@ -18,6 +18,11 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
+"@types/check-types@^7.3.1":
+  version "7.3.1"
+  resolved "https://registry.yarnpkg.com/@types/check-types/-/check-types-7.3.1.tgz#81c2eb6b9866655b149a5eb490a758266b841eb6"
+  integrity sha512-ngdPEVdU7HMFoDWBibpBB2T59WKhn832O19s1xWhbbPVC/FoMJSetj/8V68p6L28oeU2wPSVfeP4GX0AmxLKUw==
+
 "@types/eslint-visitor-keys@^1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@types/eslint-visitor-keys/-/eslint-visitor-keys-1.0.0.tgz#1ee30d79544ca84d68d4b3cdb0af4f205663dd2d"
@@ -607,7 +612,7 @@ fs-minipass@^1.2.5:
   dependencies:
     minipass "^2.2.1"
 
-fs-nextra@^0.4.5:
+fs-nextra@^0.4.3, fs-nextra@^0.4.5:
   version "0.4.5"
   resolved "https://registry.yarnpkg.com/fs-nextra/-/fs-nextra-0.4.5.tgz#0f44a00dd6c0547adaf59ce875e59941d0c70664"
   integrity sha512-oY2o6j0izYzJWp2sow21SekkR3qeMZqHV5ZfNFvfKimFU7piw1/AWwiwbcWjuSfwrfCmHyHymWZOyNbKOzew5g==

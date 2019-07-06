@@ -6,10 +6,10 @@ declare interface SchemaBase<T> {
 }
 
 export interface GuildSettings extends Settings {
-    get<K extends keyof GuildSettingsScema>(key: K): GuildSettingsScema[K];
+    get<K extends keyof GuildSettingsSchema>(key: K): GuildSettingsSchema[K];
 }
 
-export interface GuildSettingsScema {
+export interface GuildSettingsSchema {
     'whitelistedChannels': string[];
     'customReactions': CustomReactions;
     'language': string;

@@ -10,9 +10,10 @@ export interface GuildSettings extends Settings {
 }
 
 export interface GuildSettingsScema {
-    'whitelistedChannels': Channel[];
+    'whitelistedChannels': string[];
     'customReactions': CustomReactions;
     'language': string;
+    'prefix': string;
 }
 
 export interface CustomReactions extends SettingsFolder {

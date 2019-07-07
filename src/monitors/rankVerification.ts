@@ -29,7 +29,7 @@ export default class extends Monitor {
     // Checking if its the right channel and if there's an image attached to it
     const whitelistedChannels = ['591524061859807253', '593496858966360084', '591340583159595028'];
     if (!whitelistedChannels.includes(message.channel.id)) return;
-    const screenshot = message.attachments.map((msg) => msg.attachment);
+    const screenshot = message.attachments.map((msg) => msg.attachment) as string[];
     if (!screenshot.length) {
       if (message.author.id !== '254808241643585547') {
         message.delete();
@@ -122,7 +122,7 @@ export default class extends Monitor {
     return rank;
   }
 
-  giveRole(message, rank) {
+  giveRole(message: KlasaMessage, rank: string) {
 		let role;
     // let role: (string | { [K: string]: string }) = '';
     const roles = {
@@ -159,7 +159,7 @@ export default class extends Monitor {
     return null;
   }
 
-  _addRole(message: KlasaMessage, rank: string) {
+  private _addRole(message: KlasaMessage, rank: string) {
     const GUILD_LOUD = {
       freeFireRoles: ['591514831782412288', '591514826719625218', '591514820734615562', '591514823733542912', '591514817228046406', '591514813872603136'],
     };

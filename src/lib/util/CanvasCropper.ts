@@ -2,7 +2,7 @@ import sizeOf from 'image-size';
 import Util from './Util';
 import { Canvas } from 'canvas-constructor';
 
-class CanvasCropper {
+export default class CanvasCropper {
 
     public static async crop(image: string | Buffer, retry = 0): Promise<Buffer> {
         // Well just turn a URL, path or buffer into a valid buffer for Canvas

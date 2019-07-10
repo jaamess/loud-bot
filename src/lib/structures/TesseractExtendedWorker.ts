@@ -5,6 +5,25 @@ import { fork, ChildProcess } from 'child_process';
 
 export class TesseractExtendWorker extends TesseractWorker {
 
+    public recognize(image: Buffer | string, langs: string = 'eng', params: any = {}): Promise<{ text: string }> {
+        return this._sendJob('recognize', image, langs, params);
+    }
+
+    private _sendJob(type, image, langs, params): any {
+        return this._delay(job => {
+            job.send(
+                type,
+                {
+                    image,
+                    langs,
+                    params,
+                    // @ts-ignore
+                    options: this.options
+                }
+            );
+        });
+    }
+
     private _delay(fn): TesseractExtendedJob {
         // @ts-ignore
         if (check.null(this.worker)) {

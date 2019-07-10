@@ -52,7 +52,6 @@ module.exports = {
         ],
         "accessor-pairs": "warn",
         "array-callback-return": "error",
-        complexity: "warn",
         curly: [
             "error",
             "multi-line",

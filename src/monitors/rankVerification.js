@@ -21,13 +21,11 @@ module.exports = class extends Monitor {
 		this.NUMBER_REGEX = /(?:[^0-9]+)+/gi;
 		this.DETECTION_ATTEMPTS = 0;
 	}
-	// //////////////////////////////////////////////////////////////////////
 	// Main function
 	async run(message) {
 		this.DETECTION_ATTEMPTS = 0;
-		// /////////////////////////
 		// Checking if its the right channel and if there's an image attached to it
-		const whitelistedChannels = ['591524061859807253', '593496858966360084', '591340583159595028'];
+		const whitelistedChannels = ['593496858966360084', '591340583159595028', '598702089237168139'];
 		if (!whitelistedChannels.includes(message.channel.id)) return;
 		const screenshot = message.attachments.map((msg) => msg.attachment);
 		if (!screenshot.length) {
@@ -82,7 +80,6 @@ module.exports = class extends Monitor {
 		// Gives the user their role, after removing their old role.
 		this.giveRole(message, rank);
 	}
-	// ///////////////////////////////////////////////////////////////////////
 	// Crops the image and recognises the characters in the image
 	async parseImage(image) {
 		const cropped = await Cropper.crop(image[0], this.DETECTION_ATTEMPTS);
@@ -92,7 +89,6 @@ module.exports = class extends Monitor {
 		console.log(`Split text: [${split.join(', ')}]`);
 		return Number(split.find((str) => str.length === 4));
 	}
-	// //////////////////////////////////////////////////////////////////////
 	// Tells us what rank the user is based on their scores
 	parseRank(score) {
 		let rank = '';

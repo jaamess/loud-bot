@@ -15,7 +15,7 @@ module.exports = class extends Command {
 	}
 
 	async run(message, server) {
-		if (!server) return this._loudInvite(message);
+		if (!server[0]) return this._loudInvite(message);
 		switch (server[0]) {
 			case 'loud': return this._loudInvite(message);
 			case 'bruno': return this._brunoInvite(message);

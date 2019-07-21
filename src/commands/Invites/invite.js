@@ -24,13 +24,13 @@ module.exports = class extends Command {
 	}
 
 	_loudInvite(message) {
-		return message.send('Convite do servidor da LOUD:\ndiscord.gg/loud');
+		return message.send('Convite do servidor da LOUD:\nhttps://discord.gg/loud');
 	}
 	_brunoInvite(message) {
-		return message.send('Convite do servidor do Bruno PH:\ndiscord.gg/playhard');
+		return message.send('Convite do servidor do Bruno PH:\nhttps://discord.gg/playhard');
 	}
 	_crusherInvite(message) {
-		return message.send('Convite do servidor do Crusher:\ndiscord.gg/loudcrusher');
+		return message.send('Convite do servidor do Crusher:\nhttps://discord.gg/loudcrusher');
 	}
 
 };

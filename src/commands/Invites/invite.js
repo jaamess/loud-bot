@@ -24,7 +24,7 @@ module.exports = class extends Command {
 	}
 
 	_loudInvite(message) {
-		return message.send('Convite do servidor da LOUD:\nhttps://discord.gg/loud');
+		return message.send('Convite do servidor da LOUD:\nhttps://discord.gg/loud/');
 	}
 	_brunoInvite(message) {
 		return message.send('Convite do servidor do Bruno PH:\nhttps://discord.gg/playhard');

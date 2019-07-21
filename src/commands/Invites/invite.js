@@ -10,7 +10,7 @@ module.exports = class extends Command {
 			cooldown: 10,
 			permissionLevel: 5,
 			description: 'Envia códigos de convite dos servidores verificados dos membros da LOUD.',
-			usage: '<server:string>'
+			usage: '[server:string]'
 		});
 	}
 

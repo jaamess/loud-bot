@@ -4,7 +4,7 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			aliases: ['inv'],
+			aliases: ['inv', 'convite'],
 			autoAliases: true,
 			bucket: 1,
 			cooldown: 10,

@@ -17,11 +17,10 @@ module.exports = class extends Command {
 		if (message.channel.id !== '550198844265332756') return;
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;
-		let currentPoints = await user.settings.get('reputationPoints');
-		const addPoints = currentPoints++
+		let currentPoints = user.settings.get('reputationPoints');
 		// Update user's rep points
-		await user.settings.update('reputationPoints', addPoints);
-		const updatedPoints = await user.settings.get('reputationPoints');
+		await user.settings.update('reputationPoints', currentPoints + 1, { throwOnError: true } );
+		const updatedPoints = user.settings.get('reputationPoints');
 
 		return message.send(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser}>!\n<@${reppedUser}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`);
 	}

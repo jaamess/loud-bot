@@ -19,7 +19,7 @@ module.exports = class extends Command {
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;
 		console.log(reppedUser)
-		const currentPoints = await user.settings.reputationPoints;
+		let currentPoints = await user.settings.reputationPoints;
 		console.log(currentPoints)
 
 		// Update user's rep points

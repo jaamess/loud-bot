@@ -20,9 +20,9 @@ module.exports = class extends Command {
 			2: '🥉 '
     };
 
-    const leaderboard = [...message.guild.members.filter((member) => member.user.settings.get('reputationPoints') > 0).sort((a, b) => b.user.settings.get('reputationPoints') - a.user.settings.get(reputationPoints))]
-      .slice(0, 10)
-      .map((member, index) => `${index in positions ? positions[index] : index + 1} **${member.displayName}**`);
+    const leaderboard = [...message.guild.members.filter(member => member.user.settings.get('reputationPoints') > 0).sort((a, b) => b.user.settings.get('reputationPoints') - a.user.settings.get(reputationPoints)).values()]
+    .slice(0, 10)
+    .map((member, index) => `${index in medals ? medals[index] : index + 1} **${member.displayName}**`)
 
     const response = new MessageEmbed()
       .setColor(this.client.settings.colors.LOUD_GREEN)

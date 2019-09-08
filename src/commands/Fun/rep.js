@@ -25,8 +25,8 @@ module.exports = class extends Command {
 		const response = new MessageEmbed()
 		.setColor('#13ff00')
 		.setDescription(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser}>!\n<@${reppedUser}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`)
-		.setFooter('Para ver o ranking de pontos neste servidor, digite **loud lb**.');
-		
+		.setFooter('Para ver o ranking de pontos neste servidor, digite loud lb.');
+
 		return message.send(response);
 	}
 

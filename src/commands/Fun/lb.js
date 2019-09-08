@@ -15,19 +15,19 @@ module.exports = class extends Command {
     await message.guild.members.fetch();
 
     const medals = {
-      0: '🥇 ',
-      1: '🥈 ',
-			2: '🥉 '
+      0: '🥇',
+      1: '🥈',
+			2: '🥉'
     };
 
     const leaderboard = [...message.guild.members.filter(member => member.user.settings.get('reputationPoints') > 0).sort((a, b) => b.user.settings.get('reputationPoints') - a.user.settings.get('reputationPoints')).values()]
     .slice(0, 10)
-    .map((member, index) => `${index in medals ? medals[index] : index + 1} ${member.displayName}  ::  ${member.user.settings.get('reputationPoints')} pontos`).join('\n')
+    .map((member, index) => `${index in medals ? medals[index] : index + 1}  ::  ${member.user.settings.get('reputationPoints')} pontos  ::  ${member.displayName}  ` ).join('\n')
 
     const response = new MessageEmbed()
       .setColor('#13ff00')
       .setTitle('Rank de Pontos de Reputação')
-      .setDescription(`\`\`\`TOP 10\n\n${leaderboard}\`\`\``);
+      .setDescription(`\`\`\`TOP 10\nPos.  ::  Pontos  ::  Membro${leaderboard}\`\`\``);
 
     return message.send(response);
   }

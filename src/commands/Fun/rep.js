@@ -5,7 +5,7 @@ module.exports = class extends Command {
 		super(...args, {
 			aliases: ['reputation', 'pontos'],
 			cooldown: 10800,
-			permissionLevel: 8,
+			permissionLevel: 0,
 			description: 'Dá um ponto de reputação a um outro membro do servidor!',
 			extendedHelp: 'Nenhuma ajuda extra disponível.',
 			usage: '<usuario:user>',

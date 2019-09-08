@@ -22,7 +22,12 @@ module.exports = class extends Command {
 		await user.settings.update('reputationPoints', currentPoints + 1, { throwOnError: true } );
 		const updatedPoints = user.settings.get('reputationPoints');
 
-		return message.send(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser}>!\n<@${reppedUser}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`);
+		const response = new MessageEmbed()
+		.setColor('#13ff00')
+		.setDescription(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser}>!\n<@${reppedUser}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`)
+		.setFooter('Para ver o ranking de pontos neste servidor, digite **loud lb**.');
+		
+		return message.send(response);
 	}
 
 	cantRep() {

@@ -15,7 +15,7 @@ module.exports = class extends Command {
 
 	async run(message, [user]) {
 		if (message.channel.id !== '550198844265332756') return;
-		if (user.id === message.author.id) return cantRep();
+		if (user.id === message.author.id) return this.cantRep();
 		const reppedUser = user.id;
 		let currentPoints = user.settings.get('reputationPoints');
 		// Update user's rep points

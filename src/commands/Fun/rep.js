@@ -13,16 +13,15 @@ module.exports = class extends Command {
 		});
 	}
 
-	async run(message, mentionedUser) {
-		const user = mentionedUser[0]
+	async run(message, [user]) {
 		if (message.channel.id !== '550198844265332756') return;
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;
-		let currentPoints = await user.settings.reputationPoints;
+		let currentPoints = await user.settings.get('reputationPoints');
 		const addPoints = currentPoints++
 		// Update user's rep points
 		await user.settings.update('reputationPoints', addPoints);
-		const updatedPoints = await user.settings.reputationPoints;
+		const updatedPoints = await user.settings.get('reputationPoints');
 
 		return message.send(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser}>!\n<@${reppedUser}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`);
 	}

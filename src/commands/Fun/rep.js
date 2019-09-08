@@ -8,13 +8,13 @@ module.exports = class extends Command {
 			permissionLevel: 8,
 			description: 'Dá um ponto de reputação a um outro membro do servidor!',
 			extendedHelp: 'Nenhuma ajuda extra disponível.',
-			usage: '<user:user>',
+			usage: '<usuario:user>',
 			usageDelim: ' ',
 		});
 	}
 
-	async run(message, user) {
-		console.log(user)
+	async run(message, mentionedUser) {
+		const user = mentionedUser[0]
 		if (message.channel.id !== '550198844265332756') return;
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;

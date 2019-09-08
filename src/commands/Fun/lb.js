@@ -25,7 +25,7 @@ module.exports = class extends Command {
       .map((member, index) => `${index in positions ? positions[index] : index + 1} **${member.displayName}**`);
 
     const response = new MessageEmbed()
-      .setcolor(this.client.settings.colors.LOUD_GREEN)
+      .setColor(this.client.settings.colors.LOUD_GREEN)
       .setTitle('Rank de Pontos de Reputação')
       .setDescription(`**TOP 10**\n\n${leaderboard}`);
 

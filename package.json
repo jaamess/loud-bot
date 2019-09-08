@@ -2,27 +2,39 @@
   "name": "loud-bot",
   "version": "1.0.0",
   "description": "Custom bot for LOUD's discord server",
-  "main": "index.js",
+  "main": "production/src/master.js",
   "repository": "https://github.com/jaamess/loud-bot.git",
   "author": "James <thiagozevedo3@gmail.com> (https://github.com/jaamess)",
   "license": "GPL-2.0-only",
   "private": true,
+  "scripts": {
+    "ts:build": "tsc -p ."
+  },
   "dependencies": {
     "canvas": "^2.5.0",
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "chainfetch": "^1.2.2",
     "check-types": "^8.0.3",
-    "discord.js": "discordjs/discord.js",
+    "discord.js": "github:discordjs/discord.js",
     "duration-parser": "^1.0.2",
     "fs-nextra": "^0.4.5",
     "image-size": "github:image-size/image-size",
-    "klasa": "dirigeants/klasa",
+    "klasa": "github:dirigeants/klasa#settings",
     "tesseract.js": "github:naptha/tesseract.js#master"
   },
   "engines": {
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "eslint": "^6.0.1"
+    "@types/check-types": "^7.3.1",
+    "@types/image-size": "^0.7.0",
+    "@types/node": "^12.0.10",
+    "@types/ws": "^6.0.1",
+    "@typescript-eslint/eslint-plugin": "^1.11.0",
+    "@typescript-eslint/parser": "^1.11.0",
+    "eslint": "^6.0.1",
+    "eslint-plugin-node": "^9.1.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "typescript": "^3.5.2"
   }
 }

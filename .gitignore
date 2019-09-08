@@ -6,3 +6,9 @@ yarn-error.log
 # Database
 bwd
 eng.traineddata
+
+# Typescript output directory
+production
+
+# Testing stuff
+test

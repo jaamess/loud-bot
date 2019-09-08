@@ -14,7 +14,7 @@ module.exports = class extends Command {
 		// Fetch everyone
 		await message.guild.members.fetch()
 
-		const leaderboard = message.guild.members.sort((a, b) => b.user.settings.get('reputationPoints') - a.user.settings.get('reputationPoints')).map((member, index) => `**${member.displayName}** :: *${member.user.settings.get('reputationPoints')}* pontos`).slice(0, 10);
+		const leaderboard = message.guild.members.sort((a, b) => b.user.settings.get('reputationPoints') - a.user.settings.get('reputationPoints')).filter(member => member.user.settings.get('reputationPoints') > 0).map((member, index) => `**${member.displayName}** :: *${member.user.settings.get('reputationPoints')}* pontos`).slice(0, 10);
 
 		const response = new MessageEmbed()
 		.setcolor(this.client.settings.colors.LOUD_GREEN)

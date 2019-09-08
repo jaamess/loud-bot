@@ -17,7 +17,7 @@ module.exports = class extends Command {
 		if (message.channel.id !== '550198844265332756') return;
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;
-		const currentPoints = user.settings.reputationPoints;
+		const currentPoints = await user.settings.get('reputationPoints');
 
 		// Update user's rep points
 		const updatedPoints = await reppedUser.settings.update('reputationPoints', currentPoints++);

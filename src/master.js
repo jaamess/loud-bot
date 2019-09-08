@@ -10,7 +10,7 @@ KlasaClient.defaultClientSchema
 	.add('images', (folder) => folder.add('LOUD_LOGO', 'url'))
 	.add('reactionRoleMessages', 'string', { array: true });
 KlasaClient.defaultUserSchema
-	.add('reputationPoints', 'integer');
+	.add('reputationPoints', 'integer', {default: 0});
 
 // Permission Levels
 KlasaClient.defaultPermissionLevels

@@ -15,7 +15,7 @@ module.exports = class extends Command {
 
 	async run(message, [user]) {
 		if (message.channel.id !== '550198844265332756') return;
-		if (user.id === message.author.id) return this.cantRep();
+		if (user.id === message.author.id) return this.cantRep(message);
 		const reppedUser = user.id;
 		let currentPoints = user.settings.get('reputationPoints');
 		// Update user's rep points
@@ -30,7 +30,7 @@ module.exports = class extends Command {
 		return message.send(response);
 	}
 
-	cantRep() {
+	cantRep(message) {
 		return message.channel.send('<:loudwarning:591525783994892288>  **|  Oops, você não pode dar pontos de reputação para si mesmo! Tente novamente daqui a 2 horas.**')
 	}
 };

@@ -14,7 +14,7 @@ module.exports = class extends Command {
     // Fetch everyone
     await message.guild.members.fetch();
 
-    const positions = {
+    const medals = {
       0: '🥇 ',
       1: '🥈 ',
 			2: '🥉 '

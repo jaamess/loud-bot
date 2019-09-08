@@ -14,13 +14,17 @@ module.exports = class extends Command {
 	}
 
 	async run(message, user) {
+		console.log(user)
 		if (message.channel.id !== '550198844265332756') return;
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;
+		console.log(reppedUser)
 		const currentPoints = await user.settings.reputationPoints;
+		console.log(currentPoints)
 
 		// Update user's rep points
 		const updatedPoints = await reppedUser.settings.update('reputationPoints', currentPoints++);
+		console.log(updatedPoints);
 
 		return message.send(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser.id}>! <@${reppedUser.id}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`);
 	}

@@ -19,9 +19,9 @@ module.exports = class extends Command {
 		if (user.id === message.author.id) return cantRep();
 		const reppedUser = user.id;
 		let currentPoints = await user.settings.reputationPoints;
-
+		const addPoints = currentPoints++
 		// Update user's rep points
-		await user.settings.update('reputationPoints', currentPoints++);
+		await user.settings.update('reputationPoints', addPoints);
 		const updatedPoints = await user.settings.reputationPoints;
 
 		return message.send(`**${message.member.displayName}** deu 1 ponto de reputação para <@${reppedUser}>!\n<@${reppedUser}> agora tem **${updatedPoints > 1 ? `${updatedPoints} pontos.` : `${updatedPoints} ponto.`}**`);

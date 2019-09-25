@@ -20,6 +20,7 @@ module.exports = class extends Command {
 			case 'loud': return this._loudInvite(message);
 			case 'bruno': return this._brunoInvite(message);
 			case 'crusher': return this._crusherInvite(message);
+			case 'gs': return this._gsConvite(message);
 		}
 		return message;
 	}
@@ -32,6 +33,10 @@ module.exports = class extends Command {
 	}
 	_crusherInvite(message) {
 		return message.send('Convite do servidor do Crusher:\nhttps://discord.gg/loudcrusher');
+	}
+
+	_gsConvite(message) {
+		return message.send('Convite do servidor do GS:\nhttps://discord.gg/loudgs');
 	}
 
 };

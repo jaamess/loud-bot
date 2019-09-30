@@ -80,7 +80,7 @@ module.exports = class extends Language {
 					'**, **'
 				)}** to cancel this prompt.`,
 			MONITOR_COMMAND_HANDLER_ABORTED: 'Aborted',
-			INHIBITOR_COOLDOWN: (remaining) => `Você acabou de usar este comando. Você poderá usá-lo novamente em ${convert(remaining).hours} hora${convert(remaining).hours <= 1 ? '' : 's'}, ${convert(remaining).minutes} minuto${convert(remaining).minutes <= 1 ? '' : 's'} e ${convert(remaining).seconds} segundo${convert(remaining).seconds <= 1 ? '' : 's'}.`,
+			INHIBITOR_COOLDOWN: (remaining) => `Você poderá usar este comando novamente em ${convert(remaining).hours} hora${convert(remaining).hours === 1 ? '' : 's'}, ${convert(remaining).minutes} minuto${convert(remaining).minutes === 1 ? '' : 's'} e ${convert(remaining).seconds} segundo${convert(remaining).seconds === 1 ? '' : 's'}.`,
 			INHIBITOR_DISABLED_GUILD: 'Este comando foi desativado nesta guilda.',
 			INHIBITOR_DISABLED_GLOBAL: 'Este comando foi desativado pelo administrador do bot.',
 			INHIBITOR_MISSING_BOT_PERMS: (missing) => `Insufficient permissions, missing: **${missing}**`,

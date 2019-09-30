@@ -10,8 +10,10 @@ module.exports = class extends Event {
 	}
 
 	async run(member) {
+		console.log(member.user.username.toLowerCase());
 		const username = member.user.username.toLowerCase();
 		const brunoBot = ['brunoph', 'brunhophh', 'bruno playhard', 'bruno ph'];
+		console.log(brunoBot.includes(username));
 		if (brunoBot.includes(username)) {
 			await member.ban({days: 7, reason: 'Self-bot do PH detectado'});
 			member.guild.channels.get('628110340579917856').send(`<:loudwarning:591525783994892288> * |  Self bot do PH detectado e banido. Usuario: <@${member.id}>. ID: ${member.id}*`);

@@ -20,7 +20,6 @@ module.exports = class extends Event {
 			member.guild.channels.get('628110340579917856').send(`<:loudwarning:591525783994892288> * |  Self bot do PH detectado e banido. Usuario: <@${member.id}>. ID: ${member.id}*`);
 			console.log(`Self-bot banido: ${member.user.tag}`);
 			}
-		}
 	}
 
 };

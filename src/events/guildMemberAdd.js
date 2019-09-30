@@ -13,7 +13,7 @@ module.exports = class extends Event {
 		console.log(member.user.username.toLowerCase());
 		const username = member.user.username.toLowerCase();
 		console.log(username);
-		let brunoBot = ['bruno ph', 'brunoph', 'brunhophh', 'bruno playhard'];
+		let brunoBot = ['bruno ph', 'brunoph', 'brunhophh', 'bruno playhard', 'bruno  ph'];
 		console.log(brunoBot.includes(username));
 		if (brunoBot.includes(username)) {
 			await member.ban({days: 7, reason: 'Self-bot do PH detectado'});

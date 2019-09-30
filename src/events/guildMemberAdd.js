@@ -16,7 +16,7 @@ module.exports = class extends Event {
 			console.log('bruno bot');
 			await member.ban({days: 7, reason: 'Self-bot do PH detectado'});
 			member.guild.channels.get('579470954166747146').send(`:loudwarning: * |  Self bot do PH detectado e banido. Usuario: <@${member.id}>. ID: ${member.id}`);
-			onsole.log(`Self-bot banido: ${member.user.username}#${member.user.discriminator}`);
+			console.log(`Self-bot banido: ${member.user.username}#${member.user.discriminator}`);
 		}
 	}
 

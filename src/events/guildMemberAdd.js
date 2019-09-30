@@ -11,7 +11,7 @@ module.exports = class extends Event {
 
 	async run(member) {
 		console.log(member.user.username.toLowerCase());
-		const username = member.user.username.toLowerCase();
+		const username = member.user.username.toLowerCase().trim();
 		console.log(username);
 		let brunoBot = ['bruno ph', 'brunoph', 'brunhophh', 'bruno playhard', 'bruno  ph'];
 		console.log(brunoBot.includes(username));

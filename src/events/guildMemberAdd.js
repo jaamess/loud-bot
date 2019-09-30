@@ -3,6 +3,7 @@ module.exports = class extends Event {
 	constructor(...args) {
 		super(...args, {
 			name: 'guildMemberAdd',
+			event: this.name,
 			enabled: true,
 			once: false
 		});

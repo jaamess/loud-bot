@@ -12,7 +12,7 @@ module.exports = class extends Event {
 	async run(member) {
 		const brunoBot = ['brunoph', 'brunhophh', 'bruno playhard'];
 
-		if (brunoBot.includes(message.member.username)) {
+		if (brunoBot.includes(member.username)) {
 			console.log(`Self-bot banido: ${member.user.username}#${member.user.discriminator}`);
 			await member.ban({days: 7, reason: 'Self-bot do PH detectado'});
 

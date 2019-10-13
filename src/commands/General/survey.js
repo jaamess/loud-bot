@@ -23,7 +23,7 @@ module.exports = class extends Command {
 			return message.send('Oh well... Seems I can\'t DM you. Isn\' that a pain...');
 		}
 
-		await message.author.settings.update(['survey.status.active', 'survey.status.startTime'], [true, Date.now().getUnixTime()]);
+		await message.author.settings.update(['survey.status.active', 'survey.status.startTime', 'survey.step'], [true, Date.now().getUnixTime(), 1]);
 
 		return message.reply('Please check our DM\'s');
 	}

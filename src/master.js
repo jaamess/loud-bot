@@ -1,17 +1,17 @@
-const { KlasaClient } = require('klasa');
+const { LoudClient } = require('./lib/structures/LoudClientt')
 const { prefix, token } = require('../ecosystem.config.json');
 
 // Default Schemas
-KlasaClient.defaultGuildSchema
+LoudClient.defaultGuildSchema
 	.add('whitelistedChannels', 'channel', { array: true })
 	.add('customReactions', (folder) => folder.add('keywords', 'string', { array: true }).add('response', 'string', { array: true }));
 
-KlasaClient.defaultClientSchema
+LoudClient.defaultClientSchema
 	.add('colors', (folder) => folder.add('LOUD_GREEN', 'string').add('LOUD_BLACK', 'string'))
 	.add('images', (folder) => folder.add('LOUD_LOGO', 'url'))
 	.add('reactionRoleMessages', 'string', { array: true });
 
-KlasaClient.defaultUserSchema
+LoudClient.defaultUserSchema
 	.add('reputationPoints', 'integer', { default: 0, configurable: false })
 	.add('survey', surveyFolder => surveyFolder
 		.add('status', surveyStatusFolder => surveyStatusFolder
@@ -20,10 +20,11 @@ KlasaClient.defaultUserSchema
 			.add('startTime', 'integer', { default: 0, configurable: false })
 		)
 		.add('step', 'integer', { default: 1, configurable: false })
+		.add('answers', 'any', { array: true, configurable: false })
 	);
 
 // Permission Levels
-KlasaClient.defaultPermissionLevels
+LoudClient.defaultPermissionLevels
 // Torcedor Hyper
 	.add(4, (message) => message.member.roles.has('585898221415563275'))
 // Ajudante
@@ -31,7 +32,7 @@ KlasaClient.defaultPermissionLevels
 // Admin
 	.add(6, (message) => message.member.permissions.has('ADMINISTRATOR'));
 
-new KlasaClient({
+new LoudClient({
 	commandLogging: true,
 	fetchAllMembers: true,
 	prefix: prefix,

@@ -1,4 +1,8 @@
 {
 	"prefix": "loud ",
-	"token": ""
+	"token": "",
+	"sheet": {
+		"spreadsheetKey": "",
+		"authID": ""
+	}
 }

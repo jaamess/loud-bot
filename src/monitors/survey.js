@@ -17,7 +17,10 @@ module.exports = class SurveyMonitor extends Monitor {
 		});
 
 		this.QUESTIONS = new Collection([
-			[-21, 'It\'s all for now, thank you for everything and good luck!']
+			[1, { response: '1', id: '' }],
+			[2, { response: '2', id: '' }],
+			[3, { response: '3', id: '' }],
+			[-21, { response: 'It\'s all for now, thank you for everything and good luck!', id: '' }]
 		]);
 	}
 
@@ -25,17 +28,23 @@ module.exports = class SurveyMonitor extends Monitor {
 		if (!(message.channel.type !== 'dm' && message.guild)) return;
 
 		const survey = deepClone(message.author.settings.get('survey'));
-        const { step, answers } = survey;
+		const { step, answers } = survey;
+
+		if (this.QUESTIONS.has(step)) await this.save(step, message.content, answers, message.author.settings);
+
+		message.author.settings.update('survey.step', step + 1);
+
+		message.author.send(this.QUESTIONS.get(step + 1));
 
 		if (!this.QUESTIONS.has(step)) {
-			await this.save(step, answers);
-			message.author.send(this.QUESTIONS.get(-21));
+			message.author.send(this.QUESTIONS.get(-21).response);
 			return;
 		}
 	}
 
-	async save(step, answers) {
-
+	async save(step, answer, answers, settings) {
+		answers.push([step, { answer }]);
+		return settings.update('surver.answers', answers, { action: 'overwrite' })
 	}
 
 };

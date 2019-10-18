@@ -19,8 +19,10 @@
     "discord.js": "github:discordjs/discord.js",
     "duration-parser": "^1.0.2",
     "fs-nextra": "^0.4.5",
+    "google-spreadsheet-nextra": "^0.0.1",
     "image-size": "github:image-size/image-size",
     "klasa": "github:dirigeants/klasa#settings",
+    "paket-queue": "^0.1.0",
     "tesseract.js": "github:naptha/tesseract.js#master"
   },
   "engines": {

@@ -19,7 +19,7 @@ LoudClient.defaultUserSchema
 			.add('active', 'boolean', { default: false, configurable: false })
 			.add('startTime', 'integer', { default: 0, configurable: false })
 		)
-		.add('step', 'integer', { default: 1, configurable: false })
+		.add('step', 'integer', { default: 0, configurable: false })
 		.add('answers', 'any', { array: true, configurable: false })
 	);
 

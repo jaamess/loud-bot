@@ -20,31 +20,38 @@ module.exports = class SurveyMonitor extends Monitor {
 			[1, { response: '1', id: '' }],
 			[2, { response: '2', id: '' }],
 			[3, { response: '3', id: '' }],
-			[-21, { response: 'It\'s all for now, thank you for everything and good luck!', id: '' }]
+			[-21, { response: 'This is all for now, thank you for everything and good luck!', id: '' }]
 		]);
 	}
 
 	async run(message) {
-		if (!(message.channel.type !== 'dm' && message.guild)) return;
+		if (message.channel.type !== 'dm') return;
+		if (message.guild) return;
 
-		const survey = deepClone(message.author.settings.get('survey'));
-		const { step, answers } = survey;
+		const survey = await message.author.settings.get('survey');
+		const step = survey.get('step');
+		const answers = deepClone(survey.get('answers'));
+		const surveyStatus = deepClone(await message.author.settings.get('survey.status'));
 
-		if (this.QUESTIONS.has(step)) await this.save(step, message.content, answers, message.author.settings);
+		console.log(surveyStatus);
+		if (!surveyStatus.get('active')) return;
+
+		console.log('hey');
+
+		console.log(await this.save(step, message.content, answers, message.author.settings));
 
 		message.author.settings.update('survey.step', step + 1);
 
-		message.author.send(this.QUESTIONS.get(step + 1));
-
-		if (!this.QUESTIONS.has(step)) {
+		if (!this.QUESTIONS.has(step + 1)) {
 			message.author.send(this.QUESTIONS.get(-21).response);
 			return;
 		}
+		message.author.send(this.QUESTIONS.get(step + 1).response);
 	}
 
 	async save(step, answer, answers, settings) {
 		answers.push([step, { answer }]);
-		return settings.update('surver.answers', answers, { action: 'overwrite' })
+		return settings.update('survey.answers', answers, { action: 'overwrite' })
 	}
 
 };

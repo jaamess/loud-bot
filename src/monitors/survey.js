@@ -17,10 +17,10 @@ module.exports = class SurveyMonitor extends Monitor {
 		});
 
 		this.QUESTIONS = new Collection([
-			[1, { response: '1', id: '' }],
-			[2, { response: '2', id: '' }],
-			[3, { response: '3', id: '' }],
-			[-21, { response: 'This is all for now, thank you for everything and good luck!', id: '' }]
+			[1, { response: '1', id: '', type: 'TEXT' }],
+			[2, { response: '2', id: '', type: 'TEXT' }],
+			[3, { response: '3', id: '', type: 'TEXT' }],
+			[-21, { response: 'This is all for now, thank you for everything and good luck!', id: '', type: 'END' }]
 		]);
 	}
 

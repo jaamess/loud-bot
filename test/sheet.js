@@ -10,7 +10,7 @@ doc.useServiceAccountAuth(require('./GoogleKey.json'))
 		doc.getInfo()
 			.then((data) => worksheetMap.set(data.worksheets[0].title, data.worksheets[0]))
 			.then(() => {
-				worksheetMap.get('Signups').getRows()
+				worksheetMap.get('Signups').getCells({ 'min-row': 2, 'min-col': 25, 'max-row': 2, 'max-col': 2 })
 					.then(console.log.bind(this));
 			})
 			.catch(console.error.bind(this));

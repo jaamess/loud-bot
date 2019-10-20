@@ -1,10 +1,13 @@
 {
   "name": "loud-bot",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Custom bot for LOUD's discord server",
-  "main": "production/src/master.js",
+  "main": "src/master.js",
   "repository": "https://github.com/jaamess/loud-bot.git",
   "author": "James <thiagozevedo3@gmail.com> (https://github.com/jaamess)",
+  "contributors": [
+    "QuantumlyTangled (https://github.com/QuantumlyTangled)"
+  ],
   "license": "GPL-2.0-only",
   "private": true,
   "scripts": {
@@ -21,8 +24,8 @@
     "fs-nextra": "^0.4.5",
     "google-spreadsheet-nextra": "^0.0.1",
     "image-size": "github:image-size/image-size",
+    "ioredis": "^4.14.1",
     "klasa": "github:dirigeants/klasa#settings",
-    "paket-queue": "^0.1.0",
     "tesseract.js": "github:naptha/tesseract.js#master"
   },
   "engines": {

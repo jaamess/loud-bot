@@ -10,7 +10,7 @@ class SpreadsheetWriter {
 
 		this.initialized = false;
 
-		this.cellsToUpdate = new Array();
+		this.cellsToUpdate = [];
 	}
 
 	async initialize() {

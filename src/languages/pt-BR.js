@@ -68,7 +68,7 @@ module.exports = class extends Language {
 			RESOLVER_MINMAX_MAX: (name, max, suffix) => `${name} must be less than ${max}${suffix}.`,
 			REACTIONHANDLER_PROMPT: 'Which page would you like to jump to?',
 			COMMANDMESSAGE_MISSING: 'Missing one or more required arguments after end of input.',
-			COMMANDMESSAGE_MISSING_REQUIRED: (name) => `Você não providenciou o argumento "${name}". Tente novamente.`,
+			COMMANDMESSAGE_MISSING_REQUIRED: (name) => `Você precisa dizer qual ${name} vai receber este ponto de reputação! Tente novamente.`,
 			COMMANDMESSAGE_MISSING_OPTIONALS: (possibles) => `Missing a required option: (${possibles})`,
 			COMMANDMESSAGE_NOMATCH: (possibles) => `Your option didn't match any of the possibilities: (${possibles})`,
 			// eslint-disable-next-line max-len
@@ -80,7 +80,7 @@ module.exports = class extends Language {
 					'**, **'
 				)}** to cancel this prompt.`,
 			MONITOR_COMMAND_HANDLER_ABORTED: 'Aborted',
-			INHIBITOR_COOLDOWN: (remaining) => `Você poderá usar este comando novamente em ${convert(remaining).hours} hora${convert(remaining).hours === 1 ? '' : 's'}, ${convert(remaining).minutes} minuto${convert(remaining).minutes === 1 ? '' : 's'} e ${convert(remaining).seconds} segundo${convert(remaining).seconds === 1 ? '' : 's'}.`,
+			INHIBITOR_COOLDOWN: (remaining) => `Você poderá usar este comando novamente em ${convert(remaining).hours > 0 ? `${convert(remaining).hours} hora${convert(remaining).hours === 1 ? '' : 's'},` : ''}${convert(remaining).minutes} minuto${convert(remaining).minutes === 1 ? '' : 's'} e ${convert(remaining).seconds} segundo${convert(remaining).seconds === 1 ? '' : 's'}.`,
 			INHIBITOR_DISABLED_GUILD: 'Este comando foi desativado nesta guilda.',
 			INHIBITOR_DISABLED_GLOBAL: 'Este comando foi desativado pelo administrador do bot.',
 			INHIBITOR_MISSING_BOT_PERMS: (missing) => `Insufficient permissions, missing: **${missing}**`,

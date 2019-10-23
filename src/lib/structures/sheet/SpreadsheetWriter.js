@@ -1,20 +1,23 @@
 const { SheetMap } = require('./SheetMap');
+const { RedisCellArray } = require('./RedisArray');
 
 class SpreadsheetWriter {
 
-	constructor(spreadsheet) {
+	constructor(spreadsheet, client) {
 		this.spreadsheet = spreadsheet;
+		this.client = client;
 
 		this.worksheets = new SheetMap();
 		this.sheet = null;
 
 		this.initialized = false;
 
-		this.cellsToUpdate = [];
+		this.cellsToUpdate = new RedisCellArray('spreadsheetCells', this.spreadsheet);
 	}
 
 	async initialize() {
-		this.worksheets.init(this.spreadsheet, 'Signups');
+		await this.worksheets.init(this.spreadsheet, 'Signups');
+		await this.cellsToUpdate.init();
 		this.sheet = this.worksheets.first();
 		this.initialized = true;
 		return this.sheet;
@@ -61,7 +64,7 @@ class SpreadsheetWriter {
 	}
 
 	async changeCellValue(input, row, col, update) {
-		const cell = this.sheet.getCells({ 'min-row': row, 'max-row': row, 'min-col': col, 'max-col': col });
+		const [cell] = this.sheet.getCells({ 'min-row': row, 'max-row': row, 'min-col': col, 'max-col': col });
 		cell.value = input;
 		this.cellsToUpdate.push(cell);
 		if (update === true) await this.updateCells();
@@ -70,7 +73,7 @@ class SpreadsheetWriter {
 
 	async updateCells() {
 		await this.sheet.bulkUpdateCells(this.cellsToUpdate);
-		this.cellsToUpdate = new Array();
+		await this.cellsToUpdate.clear();
 		return this;
 	}
 }

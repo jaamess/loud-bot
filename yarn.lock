@@ -147,6 +147,11 @@ bignumber.js@^7.0.0:
   resolved "https://registry.yarnpkg.com/bignumber.js/-/bignumber.js-7.2.1.tgz#80c048759d826800807c4bfd521e50edbba57a5f"
   integrity sha512-S4XzBk5sMB+Rcb/LNcpzXr57VRTxgAvaAEDAl1AwRx27j00hT84O6OkteE7u8UB3NuaaygCRrEpqox4uDOrbdQ==
 
+binarytf@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/binarytf/-/binarytf-2.0.0.tgz#c5476cc5cdf023d075b9b8fa62612b86d36f666c"
+  integrity sha512-CS0MvijAFAHBBw4LgIHBP7wzdW3KWEB0KeMjblK0rHOyyhnkoMu3puW7uhJXlnS5WDn5M2XQFaQBtw00FwRfcA==
+
 bmp-js@^0.1.0:
   version "0.1.0"
   resolved "https://registry.yarnpkg.com/bmp-js/-/bmp-js-0.1.0.tgz#e05a63f796a6c1ff25f4771ec7adadc148c07233"
@@ -1293,11 +1298,6 @@ osenv@^0.1.4:
   dependencies:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
-
-paket-queue@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/paket-queue/-/paket-queue-0.1.0.tgz#8c15090eb2a0b0f1366f6ca001c285bb7f46e3cb"
-  integrity sha512-eDXNAASDE7j16CuOcAOexyZP9fKx1g1bfa4k8xQ6UdLcCyRHt/NmOPCfiX/bnffQA8ng82EAcSmThdw9PFGZbw==
 
 pako@^1.0.8:
   version "1.0.10"

@@ -1,16 +1,13 @@
-// TEMP: Just here for intelliSense
-const Redis = require('ioredis');
-
 const { SpreedsheetCell } = require('google-spreadsheet-nextra');
 
 class RedisCellArray {
 
-	constructor(key, sheet) {
+	constructor(key, sheet, redis) {
 		// eslint-disable-next-line consistent-this
 		const self = this;
 
 
-		this.redis = new Redis();
+		this.redis = redis;
 		this.sheet = sheet;
 		this.key = key;
 		this.data = [];
@@ -20,26 +17,7 @@ class RedisCellArray {
 				if (Number(prop) === prop && !(prop in target)) {
 					if (!self.data[prop]) return undefined;
 					const cellData = self.data[prop];
-					const cell = new SpreedsheetCell(
-						self.sheet,
-						cellData.spreadsheetKey,
-						cellData.worksheetID,
-						{
-							'gs:cell': {
-								$: {
-									row: cellData.row,
-									col: cellData.col
-								}
-							}
-						}
-					);
-					cell._formula = cellData._formula;
-					cell._numericValue = cellData._numericValue;
-					cell._value = cellData._value;
-
-					cell.value = cellData.value;
-
-					return cell;
+					return self.formCell(cellData);
 				}
 				return target[prop];
 			}
@@ -74,6 +52,35 @@ class RedisCellArray {
 		await this.redis.del([this.key]);
 		this.data = [];
 		return this;
+	}
+
+	formCell(data) {
+		const cell = new SpreedsheetCell(
+			this.sheet,
+			data.spreadsheetKey,
+			data.worksheetID,
+			{
+				'gs:cell': {
+					$: {
+						row: data.row,
+						col: data.col
+					}
+				}
+			}
+		);
+		cell._formula = data._formula;
+		cell._numericValue = data._numericValue;
+		cell._value = data._value;
+
+		cell.value = data.value;
+
+		return cell;
+	}
+
+	[Symbol.iterator]() {
+		// eslint-disable-next-line consistent-this
+		const self = this;
+		return this.data.map((val) => self.formCell(val)).values();
 	}
 
 }

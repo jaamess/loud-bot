@@ -1,4 +1,10 @@
 {
-	"prefix": "loud ",
-	"token": ""
+	"prefix": "",
+	"token": "",
+	"ssKey": "",
+	"redis": {
+		"ip": "",
+		"port": 6379,
+		"pass": ""
+	}
 }

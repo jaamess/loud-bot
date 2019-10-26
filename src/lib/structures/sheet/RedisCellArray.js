@@ -14,7 +14,7 @@ class RedisCellArray {
 
 		return new Proxy(this, {
 			get(target, prop) {
-				if (Number(prop) === prop && !(prop in target)) {
+				if ((typeof prop === 'number') && (Number(prop) === prop) && !(prop in target)) {
 					if (!self.data[prop]) return undefined;
 					const cellData = self.data[prop];
 					return self.formCell(cellData);
@@ -77,10 +77,10 @@ class RedisCellArray {
 		return cell;
 	}
 
-	[Symbol.iterator]() {
+	formedCells() {
 		// eslint-disable-next-line consistent-this
 		const self = this;
-		return this.data.map((val) => self.formCell(val)).values();
+		return this.data.map((val) => self.formCell(val));
 	}
 
 }

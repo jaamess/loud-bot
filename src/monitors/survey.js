@@ -17,10 +17,10 @@ module.exports = class SurveyMonitor extends Monitor {
 		});
 
 		this.QUESTIONS = new Collection([
-			[1, { response: '1', id: '', type: 'TEXT' }],
-			[2, { response: '2', id: '', type: 'TEXT' }],
-			[3, { response: '3', id: '', type: 'TEXT' }],
-			[-21, { response: 'This is all for now, thank you for everything and good luck!', id: '', type: 'END' }]
+			[1, { response: '1', type: 'TEXT', method: 'setDiscordTag' }],
+			[2, { response: '2', type: 'TEXT', method: 'setUserID' }],
+			[3, { response: '3', type: 'TEXT', method: 'setFullName' }],
+			[-21, { response: 'This is all for now, thank you for everything and good luck!', type: 'END' }]
 		]);
 	}
 
@@ -30,15 +30,12 @@ module.exports = class SurveyMonitor extends Monitor {
 
 		const survey = await message.author.settings.get('survey');
 		const step = survey.get('step');
-		const answers = deepClone(survey.get('answers'));
 		const surveyStatus = deepClone(await message.author.settings.get('survey.status'));
 
 		console.log(surveyStatus);
 		if (!surveyStatus.get('active')) return;
 
-		console.log('hey');
-
-		console.log(await this.save(step, message.content, answers, message.author.settings));
+		if (this.QUESTIONS.has(step)) await this.save(step, message.content, message.author.settings);
 
 		message.author.settings.update('survey.step', step + 1);
 
@@ -49,9 +46,8 @@ module.exports = class SurveyMonitor extends Monitor {
 		message.author.send(this.QUESTIONS.get(step + 1).response);
 	}
 
-	async save(step, answer, answers, settings) {
-		answers.push([step, { answer }]);
-		return settings.update('survey.answers', answers, { action: 'overwrite' })
+	async save(step, answer, settings) {
+		await this.client.writer[this.QUESTIONS.get(step).method](answer, 5, true);
 	}
 
 };

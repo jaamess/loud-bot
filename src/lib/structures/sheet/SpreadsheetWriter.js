@@ -11,7 +11,7 @@ class SpreadsheetWriter {
 		this.worksheets = new SheetMap();
 		this.sheet = null;
 
-		this.initialized = false;
+		this.innit = false;
 
 		this.cellsToUpdate = new RedisCellArray('spreadsheetCells', this.spreadsheet, this.redis);
 	}
@@ -20,7 +20,7 @@ class SpreadsheetWriter {
 		await this.worksheets.init(this.spreadsheet, 'Signups');
 		await this.cellsToUpdate.init();
 		this.sheet = this.worksheets.first();
-		this.initialized = true;
+		this.innit = true;
 		return this.sheet;
 	}
 
@@ -65,7 +65,7 @@ class SpreadsheetWriter {
 	}
 
 	async changeCellValue(input, row, col, update = false) {
-		const [cell] = await this.sheet.getCells({ 'min-row': row, 'max-row': row, 'min-col': col, 'max-col': col });
+		const cell = await this.sheet.getCells({ 'min-row': row, 'max-row': row, 'min-col': col, 'max-col': col });
 		cell.value = input;
 		this.cellsToUpdate.push(cell);
 		if (update === true) await this.updateCells();
@@ -73,7 +73,7 @@ class SpreadsheetWriter {
 	}
 
 	async updateCells() {
-		await this.sheet.bulkUpdateCells(this.cellsToUpdate);
+		await this.sheet.bulkUpdateCells(this.cellsToUpdate.formedCells());
 		await this.cellsToUpdate.clear();
 		return this;
 	}

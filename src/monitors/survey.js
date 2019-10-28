@@ -35,7 +35,7 @@ module.exports = class SurveyMonitor extends Monitor {
 		console.log(surveyStatus);
 		if (!surveyStatus.get('active')) return;
 
-		if (this.QUESTIONS.has(step)) await this.save(step, message.content, message.author.settings);
+		if (this.QUESTIONS.has(step)) await this.save(step, message.content);
 
 		message.author.settings.update('survey.step', step + 1);
 
@@ -46,8 +46,10 @@ module.exports = class SurveyMonitor extends Monitor {
 		message.author.send(this.QUESTIONS.get(step + 1).response);
 	}
 
-	async save(step, answer, settings) {
-		await this.client.writer[this.QUESTIONS.get(step).method](answer, 5, true);
+	async save(step, answer) {
+		const position = await this.client.settings.get('surveyPosition');
+		await this.client.writer[this.QUESTIONS.get(step).method](answer, position, true);
+		// await this.client.settings.update('surveyPosition', position + 1);
 	}
 
 };

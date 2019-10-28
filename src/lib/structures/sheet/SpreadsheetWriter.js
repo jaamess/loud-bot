@@ -1,5 +1,5 @@
 const { SheetMap } = require('./SheetMap');
-const { RedisCellArray } = require('./RedisCellArray');
+// const { RedisCellArray } = require('./RedisCellArray');
 
 class SpreadsheetWriter {
 
@@ -13,12 +13,13 @@ class SpreadsheetWriter {
 
 		this.innit = false;
 
-		this.cellsToUpdate = new RedisCellArray('spreadsheetCells', this.spreadsheet, this.redis);
+		// this.cellsToUpdate = new RedisCellArray('spreadsheetCells', this.spreadsheet, this.redis);
+		this.cellsToUpdate = [];
 	}
 
 	async initialize() {
 		await this.worksheets.init(this.spreadsheet, 'Signups');
-		await this.cellsToUpdate.init();
+		// await this.cellsToUpdate.init();
 		this.sheet = this.worksheets.first();
 		this.innit = true;
 		return this.sheet;
@@ -73,8 +74,10 @@ class SpreadsheetWriter {
 	}
 
 	async updateCells() {
-		await this.sheet.bulkUpdateCells(this.cellsToUpdate.formedCells());
-		await this.cellsToUpdate.clear();
+		// await this.sheet.bulkUpdateCells(this.cellsToUpdate.formedCells());
+		await this.sheet.bulkUpdateCells(this.cellsToUpdate);
+		this.cellsToUpdate = [];
+		// await this.cellsToUpdate.clear();
 		return this;
 	}
 

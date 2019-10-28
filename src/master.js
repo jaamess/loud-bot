@@ -9,6 +9,7 @@ LoudClient.defaultGuildSchema
 LoudClient.defaultClientSchema
 	.add('colors', (folder) => folder.add('LOUD_GREEN', 'string').add('LOUD_BLACK', 'string'))
 	.add('images', (folder) => folder.add('LOUD_LOGO', 'url'))
+	.add('surveyPosition', 'integer', { default: 3, configurable: false })
 	.add('reactionRoleMessages', 'string', { array: true });
 
 LoudClient.defaultUserSchema

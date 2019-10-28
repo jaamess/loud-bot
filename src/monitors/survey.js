@@ -22,6 +22,8 @@ module.exports = class SurveyMonitor extends Monitor {
 			[3, { response: '3', type: 'TEXT', method: 'setFullName' }],
 			[-21, { response: 'This is all for now, thank you for everything and good luck!', type: 'END' }]
 		]);
+
+		this.UPDATES = 0;
 	}
 
 	async run(message) {
@@ -32,24 +34,29 @@ module.exports = class SurveyMonitor extends Monitor {
 		const step = survey.get('step');
 		const surveyStatus = deepClone(await message.author.settings.get('survey.status'));
 
-		console.log(surveyStatus);
+		if (surveyStatus.get('completed')) return;
 		if (!surveyStatus.get('active')) return;
 
-		if (this.QUESTIONS.has(step)) await this.save(step, message.content);
+		if (this.QUESTIONS.has(step)) await this.save(step, message.content, survey.get('position'));
 
-		message.author.settings.update('survey.step', step + 1);
+		message.author.settings.update([['survey.step', step + 1]]);
 
 		if (!this.QUESTIONS.has(step + 1)) {
 			message.author.send(this.QUESTIONS.get(-21).response);
+			await message.author.settings.update([['survey.status.active', false], ['survey.status.completed', true]]);
 			return;
 		}
 		message.author.send(this.QUESTIONS.get(step + 1).response);
 	}
 
-	async save(step, answer) {
-		const position = await this.client.settings.get('surveyPosition');
-		await this.client.writer[this.QUESTIONS.get(step).method](answer, position, true);
-		// await this.client.settings.update('surveyPosition', position + 1);
+	async save(step, answer, position) {
+		let update = false;
+		if (this.UPDATES > 50) {
+			update = true;
+			this.UPDATES = 0;
+		}
+		await this.client.writer[this.QUESTIONS.get(step).method](answer, position, update);
+		this.UPDATES++;
 	}
 
 };

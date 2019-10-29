@@ -1,5 +1,7 @@
-const { Monitor, util: { deepClone } } = require('klasa');
+const { Monitor } = require('klasa');
 const { Collection } = require('discord.js');
+
+const DAY = 24 * 60 * 60 * 1000;
 
 module.exports = class SurveyMonitor extends Monitor {
 
@@ -20,7 +22,10 @@ module.exports = class SurveyMonitor extends Monitor {
 			[1, { response: '1', type: 'TEXT', method: 'setDiscordTag' }],
 			[2, { response: '2', type: 'TEXT', method: 'setUserID' }],
 			[3, { response: '3', type: 'TEXT', method: 'setFullName' }],
-			[-21, { response: 'This is all for now, thank you for everything and good luck!', type: 'END' }]
+			[-900, { response: 'This is all for now, thank you for everything and good luck!', type: 'END' }],
+			[-800, { response: 'I\' sorry but your time is up... oh wait don\'t give up just yet since you can try again.', type: 'TIMEOUT' }],
+			[-90, { response: '', type: 'DATA', method: 'setDiscordTag' }],
+			[-91, { response: '', type: 'DATA', method: 'setUserID' }]
 		]);
 
 		this.UPDATES = 0;
@@ -32,17 +37,25 @@ module.exports = class SurveyMonitor extends Monitor {
 
 		const survey = await message.author.settings.get('survey');
 		const step = survey.get('step');
-		const surveyStatus = deepClone(await message.author.settings.get('survey.status'));
+		const surveyStatus = await message.author.settings.get('survey.status');
 
 		if (surveyStatus.get('completed')) return;
 		if (!surveyStatus.get('active')) return;
 
-		if (this.QUESTIONS.has(step)) await this.save(step, message.content, survey.get('position'));
+		if ((surveyStatus.get('startTime') + DAY) > Date.now()) {
+			await message.author.send(this.QUESTIONS.get(-800).response);
+			await message.author.settings.update([['survey.step', 1], ['survey.status.startTime', 1], ['survey.status.active', false], ['survey.status.completed', false]]);
+			return;
+		}
 
-		message.author.settings.update([['survey.step', step + 1]]);
+		if (this.QUESTIONS.has(step)) await this.save(step, message.content, survey.get('position'));
+		await this.save(-91, message.author.id, survey.get('position'));
+
+		await message.author.settings.update([['survey.step', step + 1]]);
 
 		if (!this.QUESTIONS.has(step + 1)) {
-			message.author.send(this.QUESTIONS.get(-21).response);
+			await message.author.send(this.QUESTIONS.get(-900).response);
+			await this.save(-90, message.author.tag, survey.get('position'));
 			await message.author.settings.update([['survey.status.active', false], ['survey.status.completed', true]]);
 			return;
 		}

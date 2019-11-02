@@ -7,6 +7,7 @@ module.exports = class extends Monitor {
 		const question = { one: 'a', two: 'b', three: 'c', four: 'd', five: 'e', six: 'f', seven: 'g', eight: 'h', nine: 'i', ten: 'j' };
 		const loudFoguete = '<:loudfoguete:551135142756745227>';
 		if (message.content.startsWith(question.one)) {
+			console.log(`question 1`)
 			message.delete();
 			message.channel.send(`${loudFoguete}  **|  <@${message.member.id}> acertou pergunta 1 eba.**`);
 			return this.giveRole(message.member, roles.one);
@@ -60,6 +61,7 @@ module.exports = class extends Monitor {
 
 	async giveRole(member, role) {
 		await member.roles.add(role);
+		console.log((role added))
 		return
 	}
 

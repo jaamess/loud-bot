@@ -14,7 +14,7 @@ module.exports = class extends Monitor {
 	async run(message) {
 		if (message.channel.id !== '639560440862474243') return;
 		console.log('right channel');
-		const roles = { one: '640011392555941890', two: '640011438873903104', three: '640011460948525056', four: '640011477486534657', five: '640011505307222029', six: '640011523632136215', seven: '640011540090585097', eight: '640011555345399828h', nine: '640011572147650581', ten: '640011589344428032' };
+		const roles = { one: '640011392555941890', two: '640011438873903104', three: '640011460948525056', four: '640011477486534657', five: '640011505307222029', six: '640011523632136215', seven: '640011540090585097', eight: '640011555345399828', nine: '640011572147650581', ten: '640011589344428032' };
 		const question = { one: 'a', two: 'b', three: 'c', four: 'd', five: 'e', six: 'f', seven: 'g', eight: 'h', nine: 'i', ten: 'j' };
 		const loudFoguete = '<:loudfoguete:551135142756745227>';
 		if (message.content === question.one) {

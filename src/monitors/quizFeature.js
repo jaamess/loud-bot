@@ -61,7 +61,7 @@ module.exports = class extends Monitor {
 
 	async giveRole(member, role) {
 		await member.roles.add(role);
-		console.log((role added))
+		console.log((`role added`))
 		return
 	}
 

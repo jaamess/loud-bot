@@ -1,5 +1,15 @@
 const { Monitor } = require('klasa');
 module.exports = class extends Monitor {
+	constructor(...args) {
+		super(...args, {
+			enabled: true,
+			ignoreBots: true,
+			ignoreSelf: true,
+			ignoreOthers: false,
+			ignoreWebhooks: true,
+			ignoreEdits: true
+		});
+	}
 
 	async run(message) {
 		if (message.channel.id !== '639560440862474243') return;

@@ -20,7 +20,7 @@ module.exports = class extends Monitor {
 		if (message.content.toLowerCase() === question.one) {
 			console.log(`question 1`)
 			message.delete();
-			message.channel.send(`${loudFoguete}  **|  <@${message.member.id}> acertou a pergunta 1!*`);
+			message.channel.send(`${loudFoguete}  **|  <@${message.member.id}> acertou a pergunta 1!**`);
 			return this.giveRole(message.member, roles.one);
 		}
 		if (message.content.toLowerCase() === question.two) {

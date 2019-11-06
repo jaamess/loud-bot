@@ -42,7 +42,7 @@ module.exports = class SurveyMonitor extends Monitor {
 		if (surveyStatus.get('completed')) return;
 		if (!surveyStatus.get('active')) return;
 
-		if ((surveyStatus.get('startTime') + DAY) > Date.now()) {
+		if ((surveyStatus.get('startTime') + DAY) < Date.now()) {
 			await message.author.send(this.QUESTIONS.get(-800).response);
 			await message.author.settings.update([['survey.step', 1], ['survey.status.startTime', 1], ['survey.status.active', false], ['survey.status.completed', false]]);
 			return;

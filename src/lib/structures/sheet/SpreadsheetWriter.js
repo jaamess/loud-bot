@@ -66,7 +66,7 @@ class SpreadsheetWriter {
 	}
 
 	async changeCellValue(input, row, col, update = false) {
-		const cell = await this.sheet.getCells({ 'min-row': row, 'max-row': row, 'min-col': col, 'max-col': col });
+		const [cell] = await this.sheet.getCells({ 'min-row': row, 'max-row': row, 'min-col': col, 'max-col': col, 'return-empty': true });
 		cell.value = input;
 		this.cellsToUpdate.push(cell);
 		if (update === true) await this.updateCells();

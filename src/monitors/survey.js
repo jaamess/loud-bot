@@ -64,7 +64,7 @@ module.exports = class SurveyMonitor extends Monitor {
 
 	async save(step, answer, position) {
 		let update = false;
-		if (this.UPDATES > 50) {
+		if (this.UPDATES > 20) {
 			update = true;
 			this.UPDATES = 0;
 		}

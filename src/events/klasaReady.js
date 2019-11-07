@@ -1,10 +1,10 @@
 const { Event } = require('klasa');
 const Redis = require('ioredis');
 const { GoogleSpreadsheet } = require('google-spreadsheet-nextra');
-const { SpreadsheetWriter } = require('../lib/structures/sheet/SpreadsheetWriter')
+const { SpreadsheetWriter } = require('../lib/structures/sheet/SpreadsheetWriter');
 
 const config = require('../../ecosystem.config.json');
-const GoogleKey = require('../lib/GoogleKey.json')
+const GoogleKey = require('../lib/GoogleKey.json');
 
 module.exports = class extends Event {
 
@@ -18,7 +18,6 @@ module.exports = class extends Event {
 	}
 
 	async run() {
-
 		this.client.redis = new Redis({
 			port: config.redis.port,
 			host: config.redis.ip,

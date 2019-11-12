@@ -12,3 +12,7 @@ production
 
 # Testing stuff
 test
+
+src/lib/GoogleKey.json
+
+src/GoogleKey.json

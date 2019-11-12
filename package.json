@@ -15,6 +15,7 @@
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "chainfetch": "^1.2.2",
     "check-types": "^8.0.3",
+    "convert-seconds": "^1.0.1",
     "discord.js": "github:discordjs/discord.js",
     "duration-parser": "^1.0.2",
     "fs-nextra": "^0.4.5",
@@ -26,15 +27,8 @@
     "node": ">=10.0.0"
   },
   "devDependencies": {
-    "@types/check-types": "^7.3.1",
-    "@types/image-size": "^0.7.0",
-    "@types/node": "^12.0.10",
-    "@types/ws": "^6.0.1",
-    "@typescript-eslint/eslint-plugin": "^1.11.0",
-    "@typescript-eslint/parser": "^1.11.0",
     "eslint": "^6.0.1",
     "eslint-plugin-node": "^9.1.0",
-    "eslint-plugin-promise": "^4.2.1",
-    "typescript": "^3.5.2"
+    "eslint-plugin-promise": "^4.2.1"
   }
 }

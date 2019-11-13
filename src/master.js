@@ -4,18 +4,17 @@ const { prefix, token } = require('../ecosystem.config.json');
 // Default Schemas
 KlasaClient.defaultGuildSchema
 	.add('whitelistedChannels', 'channel', { array: true })
-	.add('blacklistedTicketChannels', 'channel', { array: true })
-	.add('customReactions', (folder) => folder.add('keywords', 'string', { array: true }).add('response', 'string', { array: true }))
-	.add('tickets', (folder) =>
-		folder
-			.add('reaction', 'string')
-			.add('chance', 'string', { default: '0.05' })
-			.add('blacklistedChannels', 'channel', { array: true })
-	);
+	.add('customReactions', (folder) => folder.add('keywords', 'string', { array: true }).add('response', 'string', { array: true }));
 KlasaClient.defaultClientSchema
 	.add('colors', (folder) => folder.add('LOUD_GREEN', 'string').add('LOUD_BLACK', 'string'))
 	.add('images', (folder) => folder.add('LOUD_LOGO', 'url'))
-	.add('reactionRoleMessages', 'string', { array: true });
+	.add('reactionRoleMessages', 'string', { array: true })
+	.add('tickets', (folder) =>
+		folder
+			.add('reaction', 'string', { default: '644222513550852103' })
+			.add('chance', 'string', { default: '0.05' })
+			.add('blacklistedChannels', 'channel', { array: true })
+	);
 KlasaClient.defaultUserSchema
 	.add('reputationPoints', 'integer', { default: 0 })
 	.add('tickets', (folder) =>

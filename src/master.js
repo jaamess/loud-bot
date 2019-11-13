@@ -9,6 +9,7 @@ KlasaClient.defaultGuildSchema
 	.add('tickets', (folder) =>
 		folder
 			.add('reaction', 'string')
+			.add('chance', 'string', { default: '0.05' })
 			.add('blacklistedChannels', 'channel', { array: true })
 	);
 KlasaClient.defaultClientSchema

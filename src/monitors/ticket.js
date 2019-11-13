@@ -1,4 +1,5 @@
 const { Monitor } = require('klasa');
+const { getRandomItem } = require('../lib/util/rand');
 
 module.exports = class extends Monitor {
 
@@ -18,7 +19,7 @@ module.exports = class extends Monitor {
 
 		const tickets = await message.author.settings.get('tickets');
 
-		if (this.chanceGen()) {
+		if (this.chanceGen(tickets.get('chance'))) {
 			await message.author.settings.update([['tickets.count', tickets.get('count') + 1]]);
 			await message.react(message.guild.emojis.get(clientTickets.get('reaction')));
 			return;
@@ -27,9 +28,13 @@ module.exports = class extends Monitor {
 		return;
 	}
 
-	chanceGen() {
-		// TODO: Randomization Logic
-		return false;
+	chanceGen(chance) {
+		chance = Number(chance);
+		const lossChance = 1 - chance;
+
+		const options = [false, true];
+		const weights = [lossChance, chance];
+		return getRandomItem(options, weights);
 	}
 
 };

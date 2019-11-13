@@ -5,7 +5,12 @@ const { prefix, token } = require('../ecosystem.config.json');
 KlasaClient.defaultGuildSchema
 	.add('whitelistedChannels', 'channel', { array: true })
 	.add('blacklistedTicketChannels', 'channel', { array: true })
-	.add('customReactions', (folder) => folder.add('keywords', 'string', { array: true }).add('response', 'string', { array: true }));
+	.add('customReactions', (folder) => folder.add('keywords', 'string', { array: true }).add('response', 'string', { array: true }))
+	.add('tickets', (folder) =>
+		folder
+			.add('reaction', 'string')
+			.add('blacklistedChannels', 'channel', { array: true })
+	);
 KlasaClient.defaultClientSchema
 	.add('colors', (folder) => folder.add('LOUD_GREEN', 'string').add('LOUD_BLACK', 'string'))
 	.add('images', (folder) => folder.add('LOUD_LOGO', 'url'))

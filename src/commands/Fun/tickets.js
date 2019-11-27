@@ -12,11 +12,12 @@ module.exports = class extends Command {
 	}
 
 	async run(message, [user]) {
+		if (((message.channel.type !== 'dm') || message.guild) && !user) throw 'Now do you really want others seeing your ticket count? Yea I thought so. Now go run this again in my DMs';
+		if (!user) return this.getPersonal(message);
+
 		const { permission } = await this.client.permissionLevels.run(message, 6);
 
 		if ((permission === true) && user) return this.getOthers(message, user);
-		if (((message.channel.type !== 'dm') || message.guild) && !user) throw 'Now do you really want others seeing your ticket count? Yea I thought so. Now go run this again in my DMs';
-		if (!user) return this.getPersonal(message);
 		throw 'I am sorry but you can\'t check other peoples tickets. Again sorry... But not really';
 	}
 

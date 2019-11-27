@@ -21,7 +21,6 @@ LoudClient.defaultUserSchema
 			.add('startTime', 'integer', { default: 0, configurable: false })
 		)
 		.add('step', 'integer', { default: 1, configurable: false })
-		.add('position', 'integer', { default: 0, configurable: false })
 		.add('answers', 'any', { array: true, configurable: false })
 	);
 

@@ -38,6 +38,7 @@ module.exports = class SurveyMonitor extends Monitor {
 		const survey = await message.author.settings.get('survey');
 		const step = survey.get('step');
 		const surveyStatus = await message.author.settings.get('survey.status');
+		const position = await this.client.settings.get('surveyPosition');
 
 		if (surveyStatus.get('completed')) return;
 		if (!surveyStatus.get('active')) return;
@@ -48,14 +49,15 @@ module.exports = class SurveyMonitor extends Monitor {
 			return;
 		}
 
-		if (this.QUESTIONS.has(step)) await this.save(step, message.content, survey.get('position'));
-		await this.save(-91, message.author.id, survey.get('position'));
+		if (this.QUESTIONS.has(step)) await this.save(step, message.content, position);
+		await this.save(-91, message.author.id, position);
 
 		await message.author.settings.update([['survey.step', step + 1]]);
 
 		if (!this.QUESTIONS.has(step + 1)) {
 			await message.author.send(this.QUESTIONS.get(-900).response);
-			await this.save(-90, message.author.tag, survey.get('position'));
+			await this.save(-90, message.author.tag, position);
+			await this.client.settings.update([['surveyPosition', position + 1]]);
 			await message.author.settings.update([['survey.status.active', false], ['survey.status.completed', true]]);
 			return;
 		}

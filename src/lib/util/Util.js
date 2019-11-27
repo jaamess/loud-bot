@@ -3,15 +3,15 @@ const fetch = require('chainfetch');
 
 class Util {
 
-	static isURL(str) {
-		return Util.URL_REGEX.test(str);
-	}
+    static isURL(str) {
+        return Util.URL_REGEX.test(str);
+    }
 
-	static async parseImage(image) {
-		if (Util.isURL(image)) return fetch.get(image).toBuffer().onlyBody();
-		if (Buffer.isBuffer(image)) return image;
-		return fsn.readFile(image);
-	}
+    static async parseImage(image) {
+        if (Util.isURL(image)) return fetch.get(image).toBuffer().onlyBody();
+        if (Buffer.isBuffer(image)) return image;
+        return fsn.readFile(image);
+    }
 
 }
 

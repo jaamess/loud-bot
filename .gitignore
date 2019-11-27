@@ -12,3 +12,7 @@ production
 
 testingConfig.js
 GoogleKey.json
+
+src/lib/GoogleKey.json
+
+src/GoogleKey.json

@@ -1,5 +1,4 @@
 const { Command } = require("klasa");
-const { MessageEmbed } = require("discord.js");
 
 const explanationChannelID = "";
 const questions = [];
@@ -52,6 +51,9 @@ module.exports = class extends Command {
     }
 
     // If the code reaches here, all questions have been answered by this user
-    await message.author.send('Por hoje é só, muito obrigado e boa sorte!').catch(() => undefined)
+    await message.author.send('Agora, para finalizar, precisamos que você nos mande um vídeo de até 30 segundos nos contando por que devemos escolher você para particidar do campeonato e ser o próximo membro da LOUD. Pode enviar para o Youtube, Instagram, Twitter ou Facebook. Se ainda não tiver o vídeo, tudo bem pode enviar depois com o comando !video. Se já tiver agora, é só colar o link aqui!').catch(() => undefined)
+
+    // Save all the answers into the users database.
+    return message.author.settings.update('surveyAnswers', answers)
   }
 };

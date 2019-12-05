@@ -25,7 +25,7 @@ module.exports = class extends Command {
 		});
 
 		// TODO: Now we upload all the answers to Google Sheets
-		return;
+		return console.log(answers);
 	}
 
 };

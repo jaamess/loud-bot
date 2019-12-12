@@ -1,6 +1,6 @@
 const { Command } = require('klasa');
 
-const explanationChannelID = '';
+const explanationChannelID = '641474449228693526';
 const questions = [
 	`Para começar, qual é o seu nome completo?`,
 	`E a sua idade?`,
@@ -31,7 +31,8 @@ module.exports = class extends Command {
 
 	constructor(...args) {
 		super(...args, {
-			description: 'Muda o idioma do bot no servidor. Pode ser portugues ou ingles.'
+			description: 'Muda o idioma do bot no servidor. Pode ser portugues ou ingles.',
+			runIn: ['text']
 		});
 	}
 
@@ -48,14 +49,14 @@ module.exports = class extends Command {
 			const channel = message.guild.channels.get(explanationChannelID);
 			if (!channel) return;
 			// Send a message to mention the user in this channel to get him to learn how to enable dms
-			const alert = await channel.send(message.author).catch(() => undefined);
+			const alert = await channel.send(`${message.author}`).catch(() => undefined);
 			// Delete the mention after 5 seconds to prevent spam in this channel
 			if (alert) alert.delete({ timeout: 5000 });
 			// Cancel out
 			return;
 		}
 
-		const answers = [];
+		const answers = [{ question: 'User Tag', answer: message.author.tag }, { question: 'User ID', answer: message.author.id }];
 		const filter = msg => msg.author.id === message.author.id;
 
 		// DMs are open, begin Q&A
@@ -82,7 +83,7 @@ module.exports = class extends Command {
 			.catch(() => undefined);
 
 		// Save all the answers into the users database.
-		message.author.settings.update('surveyAnswers', answers);
+		const updated = await message.author.settings.update('surveyAnswers', answers);
 		return;
 	}
 

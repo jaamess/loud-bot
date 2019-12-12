@@ -24,8 +24,7 @@ module.exports = class extends Command {
 			answer: url
 		});
 
-		// TODO: Now we upload all the answers to Google Sheets
-		return console.log(answers);
+		return message.author.settings.update('surveyAnswers', answers);
 	}
 
 };

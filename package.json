@@ -11,6 +11,7 @@
     "ts:build": "tsc -p ."
   },
   "dependencies": {
+    "@klasa/request-handler": "0.0.3",
     "canvas": "^2.5.0",
     "canvas-constructor": "github:kyranet/canvasConstructor",
     "chainfetch": "^1.2.2",
@@ -19,7 +20,6 @@
     "discord.js": "github:discordjs/discord.js",
     "duration-parser": "^1.0.2",
     "fs-nextra": "^0.4.5",
-    "image-size": "github:image-size/image-size",
     "klasa": "github:dirigeants/klasa#settings",
     "tesseract.js": "github:naptha/tesseract.js#master"
   },

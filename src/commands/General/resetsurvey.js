@@ -12,7 +12,7 @@ module.exports = class extends Command {
 
 	async run(message, [user]) {
 		// Save all the answers into the users database.
-		await user.settings.reset('surveyAnswers');
+		await user.settings.reset(['surveyAnswers', 'surveyExported']);
 
 		return message.send(`Reset ${user} survey answers. They can fill it out again.`);
 	}

@@ -41,10 +41,17 @@ module.exports = class extends Command {
 		const csvArray = [questions.join(` ; `)];
 
 		for (const settings of userSettings) {
+			// Check if this survey was already exported
+			if (settings.surveyExported) continue;
 			// If they don't have survey filled skip em
 			if (!settings.surveyAnswers || !settings.surveyAnswers.length) continue;
 
+			const user = this.client.users.get(settings.id);
+			if (!user) continue;
+
 			csvArray.push(settings.surveyAnswers.map(a => a.answer).join(' ; '));
+
+			user.settings.update('surveyExported', true);
 		}
 
 		message.channel.sendFile(Buffer.from(csvArray.join(`\n`)), 'survey.csv', 'James is the best!');

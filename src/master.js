@@ -13,7 +13,8 @@ KlasaClient.defaultClientSchema
 	.add('reactionRoleMessages', 'string', { array: true });
 KlasaClient.defaultUserSchema
 	.add('reputationPoints', 'integer', { default: 0 })
-	.add('surveyAnswers', 'any', { array: true });
+	.add('surveyAnswers', 'any', { array: true })
+	.add('surveyExported', 'boolean');
 
 // Permission Levels
 KlasaClient.defaultPermissionLevels

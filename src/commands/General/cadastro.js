@@ -37,6 +37,11 @@ module.exports = class extends Command {
 	}
 
 	async run(message) {
+		const { settings } = message.author;
+		if (settings.surveyAnswers.length) {
+			message.author.send('You have already completed a survey.').catch(() => undefined);
+			return;
+		}
 		// First send a message to see if the bot can send messages. This also introduces the bot to the user
 		const introduce = await message.author
 			.send(
@@ -83,8 +88,7 @@ module.exports = class extends Command {
 			.catch(() => undefined);
 
 		// Save all the answers into the users database.
-		const updated = await message.author.settings.update('surveyAnswers', answers);
-		return;
+		message.author.settings.update('surveyAnswers', answers);
 	}
 
 };

@@ -1,6 +1,8 @@
 const { Command } = require('klasa');
 
 const questions = [
+	`User Tag`,
+	`User ID`,
 	`Para começar, qual é o seu nome completo?`,
 	`E a sua idade?`,
 	`Digite agora apenas os números do seu RG, sem traços ou pontos.`,
@@ -52,6 +54,11 @@ module.exports = class extends Command {
 			csvArray.push(settings.surveyAnswers.map(a => a.answer).join(' ; '));
 
 			user.settings.update('surveyExported', true);
+		}
+
+		if (csvArray.length < 2) {
+			message.channel.send("You don't have any non-exported surveys at this time.");
+			return;
 		}
 
 		message.channel.sendFile(Buffer.from(csvArray.join(`\n`)), 'survey.csv', 'James is the best!');

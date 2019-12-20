@@ -37,8 +37,8 @@ module.exports = class extends Command {
 	}
 
 	async run(message) {
-		const { settings } = message.author;
-		if (settings.surveyAnswers.length) {
+		const surveyAnswers = message.author.settings.get('surveyAnswers');
+		if (surveyAnswers.length) {
 			message.author.send('You have already completed a survey.').catch(() => undefined);
 			return;
 		}

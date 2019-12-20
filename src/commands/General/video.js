@@ -12,7 +12,7 @@ module.exports = class extends Command {
 
 	async run(message, [url]) {
 		// Save all the answers into the users database.
-		const answers = await message.author.settings.get('surveyAnswers');
+		const answers = message.author.settings.get('surveyAnswers');
 		// If the user has not filled out the survey yet, we ask them to use the survey command.
 		if (!answers || !answers.length) {
 			return message.send('Please use the survey command first to answer the questions.');
@@ -24,7 +24,9 @@ module.exports = class extends Command {
 			answer: url
 		});
 
-		return message.author.settings.update('surveyAnswers', answers);
+		message.author.send('Okay, the survey has been saved!');
+
+		return message.author.settings.update('surveyAnswers', answers, { arrayAction: 'overwrite' });
 	}
 
 };

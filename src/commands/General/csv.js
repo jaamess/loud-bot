@@ -23,7 +23,8 @@ const questions = [
 	`Qual o seu Instagram? (Caso não tenha, digitar "-")`,
 	`Qual o seu Facebook? (Caso não tenha, digitar "-")`,
 	`Qual o seu canal de Youtube? (Caso não tenha, digitar "-")`,
-	`Qual o seu canal de Streams? (Caso não tenha, digitar "-")`
+	`Qual o seu canal de Streams? (Caso não tenha, digitar "-")`,
+	`To end this, we need you to send us a 30-45 second video telling why we should pick you to participate in the tournament and to become the next LOUD member. Can be through Youtube, Instgram, Twitter, or Facebook. If you don't have it yet, don't you worry, you can send it later using the code !video and the link, like this: !video www.youtube.com/XXXXX. If you don't have the video yet, just hit enter.`
 ];
 
 module.exports = class extends Command {
@@ -44,18 +45,19 @@ module.exports = class extends Command {
 
 		for (const settings of userSettings) {
 			// Check if this survey was already exported
-			if (settings.surveyExported) continue;
-			// If they don't have survey filled skip em
+			// if (settings.surveyExported) continue;
+			// If they don't have survey filled skip em. 24 answers means already gave a video url
 			if (!settings.surveyAnswers || !settings.surveyAnswers.length) continue;
 
 			const user = this.client.users.get(settings.id);
 			if (!user) continue;
-
+			console.log(settings.surveyAnswers);
 			csvArray.push(settings.surveyAnswers.map(a => a.answer).join(' ; '));
 
 			user.settings.update('surveyExported', true);
 		}
 
+		console.log(csvArray);
 		if (csvArray.length < 2) {
 			message.channel.send("You don't have any non-exported surveys at this time.");
 			return;

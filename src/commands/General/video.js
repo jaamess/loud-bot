@@ -12,11 +12,11 @@ module.exports = class extends Command {
 
 	async run(message, [url]) {
 		// Save all the answers into the users database.
-		const answers = message.author.settings.get('surveyAnswers');
+		const answers = [...message.author.settings.get('surveyAnswers')];
 		// If the user has not filled out the survey yet, we ask them to use the survey command.
-		if (!answers || !answers.length) {
-			return message.send('Please use the survey command first to answer the questions.');
-		}
+		if (!answers || !answers.length) return message.send('Please use the survey command first to answer the questions.');
+		// 24 means video is already saved.
+		if (answers.length === 24) return message.send('You have already saved your video url.');
 
 		// Add the url answer to the answers
 		answers.push({

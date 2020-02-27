@@ -18,8 +18,8 @@ module.exports = class extends Monitor {
         if(message.member.permissions.has('ADMINISTRATOR')) return;
         // Forbidden words arrays
         const forbiddenWords = 'guilda';
-        const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo'];
-        const vendas = ['vendo conta'];
+        const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo', 'fluminense', ''];
+        const vendas = ['vendo conta', 'troco conta'];
         // Words from the message
         const words = message.content.split(' ').slice(0);
 
@@ -35,7 +35,7 @@ module.exports = class extends Monitor {
 
         if(vendas.some(v => words.includes(v))) {
             message.delete();
-            return message.reply(`<:loudwarning:591525783994892288>  |  **Vendas não são permitidas no servidor, obrigado.**`);
+            return message.reply(`<:loudwarning:591525783994892288>  |  **Vendas e trocas não são permitidas no servidor, obrigado.**`);
         }
     }
 

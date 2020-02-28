@@ -20,8 +20,9 @@ module.exports = class extends Monitor {
         const forbiddenWords = 'guilda';
         const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo', 'fluminense'];
         const vendas = ['vendo conta', 'troco conta'];
+        const whatsapp = ['whatsapp', '+55', 'what\'sapp', 'no whats', 'no wpp'];
         // Words from the message
-        const words = message.content.split(' ').slice(0);
+        const words = message.content.toLowerCase().split(' ').slice(0);
 
         if(words.includes('guilda')) {
             message.delete();
@@ -37,6 +38,11 @@ module.exports = class extends Monitor {
             message.delete();
             return message.reply(`<:loudwarning:591525783994892288>  |  **Vendas e trocas não são permitidas no servidor, obrigado.**`);
         }
-    }
+
+        if(whatsapp.some(v => words.includes(v))) {
+            message.delete();
+            return message.reply(`<:loudwarning:591525783994892288>  |  **Divulgação de números de Whatsapp não é permitida aqui, obrigado.**`);
+        }
+}
 
 };

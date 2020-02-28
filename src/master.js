@@ -15,7 +15,7 @@ KlasaClient.defaultUserSchema
 // Permission Levels
 KlasaClient.defaultPermissionLevels
 // Torcedor Hyper
-	.add(5, (message) => message.member.roles.highest.position >= 43)
+	.add(5, (message) => message.member.roles.highest.position >= 53)
 // Admin
 	.add(6, (message) => message.member.permissions.has('ADMINISTRATOR'));
 

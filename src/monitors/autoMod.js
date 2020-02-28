@@ -43,6 +43,11 @@ module.exports = class extends Monitor {
             message.delete();
             return message.reply(`<:loudwarning:591525783994892288>  |  **Divulgação de números de Whatsapp não é permitida aqui, obrigado.**`);
         }
+
+        if(message.content === '.' || message.content === ',' || message.content === '\'') {
+            message.delete();
+            return message.reply(`<:loudwarning:591525783994892288>  |  **Sem pontos aleatórios no chat, por favor!**`);
+        }
 }
 
 };

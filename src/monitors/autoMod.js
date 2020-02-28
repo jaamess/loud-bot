@@ -19,7 +19,7 @@ module.exports = class extends Monitor {
         // Forbidden words arrays
         const forbiddenWords = 'guilda';
         const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo', 'fluminense'];
-        const vendas = ['vendo conta', 'troco conta', 'vende se conta'];
+        const vendas = ['vendo conta', 'troco conta', 'vende se conta', 'upo contas', 'upo conta'];
         const whatsapp = ['whatsapp', '+55', 'what\'sapp', 'no whats', 'no wpp'];
         // Words from the message
         const words = message.content.toLowerCase().split(' ').slice(0);
@@ -36,7 +36,7 @@ module.exports = class extends Monitor {
 
         if(vendas.some(v => words.includes(v))) {
             message.delete();
-            return message.reply(`<:loudwarning:591525783994892288>  |  **Vendas e trocas não são permitidas no servidor, obrigado.**`);
+            return message.reply(`<:loudwarning:591525783994892288>  |  **Vender, trocar e upar contas não é permitido no servidor, obrigado.**`);
         }
 
         if(whatsapp.some(v => words.includes(v))) {

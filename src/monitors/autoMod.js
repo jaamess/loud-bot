@@ -24,7 +24,7 @@ module.exports = class extends Monitor {
         // Words from the message
         const words = message.content.toLowerCase().split(' ').slice(0);
 
-        if(words.includes('guilda')) {
+        if(forbiddenWords.some(f => words.includes(f))) {
             message.delete();
             return message.reply(`<:loudwarning:591525783994892288>  |  **Para divulgar sua guilda, ou encontrar guildas que estejam recrutando, vá em: <#579117494598631424>.**`);
         }

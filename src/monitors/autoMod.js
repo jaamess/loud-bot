@@ -19,7 +19,7 @@ module.exports = class extends Monitor {
         // Forbidden words arrays
         const forbiddenWords = 'guilda';
         const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo', 'fluminense'];
-        const vendas = ['vendo conta', 'troco conta'];
+        const vendas = ['vendo conta', 'troco conta', 'vende se conta'];
         const whatsapp = ['whatsapp', '+55', 'what\'sapp', 'no whats', 'no wpp'];
         // Words from the message
         const words = message.content.toLowerCase().split(' ').slice(0);

@@ -19,7 +19,7 @@ module.exports = class extends Monitor {
         // Forbidden words arrays
         const forbiddenWords = ['guilda?', 'guilda', 'guilda.', 'guilda!', 'requisitos'];
         const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo', 'fluminense'];
-        const vendas = ['vendo conta', 'troco conta', 'vende se conta', 'upo contas', 'upo conta'];
+        const vendas = ['vendo conta', 'troco conta', 'vende se conta', 'upo contas', 'upo conta', 'troco contas'];
         const whatsapp = ['whatsapp', '+55', 'what\'sapp', 'no whats', 'no wpp'];
         // Words from the message
         const words = message.content.toLowerCase().split(' ').slice(0);

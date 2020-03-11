@@ -17,13 +17,13 @@ module.exports = class extends Monitor {
         if(message.channel.id !== '550196743099383818') return;
         if(message.member.permissions.has('ADMINISTRATOR')) return;
         // Forbidden words arrays
-        const forbiddenWords = ['guilda?', 'guilda.', 'guilda!', 'requisitos', 'recrutando'];
+        const forbiddenWords = ['guilda?', 'guilda.', 'guilda!', 'requisitos', 'recrutando', 'guilda'];
         const politicaFutebol = ['vasco', 'bolsonaro', 'lula', 'brasileirão', 'futebol', 'bolsominion', 'petista', 'luladrão', 'salnorabo', 'fluminense'];
         const vendas = ['vendo conta', 'troco conta', 'vende se conta', 'upo contas', 'upo conta', 'troco contas'];
         const whatsapp = ['whatsapp', '+55', 'what\'sapp', 'no whats', 'no wpp'];
         // Words from the message
         const words = message.content.toLowerCase().split(' ').slice(0);
-        
+
         if (message.member.roles.has('550207522779168771')) return;
 
         if(forbiddenWords.some(f => words.includes(f))) {
